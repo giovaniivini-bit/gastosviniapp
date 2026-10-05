@@ -231,7 +231,7 @@ function parsePoupancaBabyXlsx(xlsxBuf) {
 
     const rowInner = rowMatch[2];
     const cols = {};
-    const cellRegex = /<c\b([^>]*)(?:\/>|>([\s\S]*?)<\/c>)/g;
+    const cellRegex = /<c\b([^>\/]*)(?:\/>|>([\s\S]*?)<\/c>)/g;
     let cMatch;
     while ((cMatch = cellRegex.exec(rowInner)) !== null) {
       const cAttrs = cMatch[1];
