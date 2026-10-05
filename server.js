@@ -117,7 +117,7 @@ function inferDateMonth(rIdx, hVal, jVal, prevMonth) {
   };
   if (rIdx === 129) return 3; // 23/01 até mês 25/05 fica no bloco de março
   if (rIdx === 160 || rIdx === 161) return 6;
-  if (rIdx === 207) return 9;
+  if (rIdx === 207 || rIdx === 208 || rIdx === 221) return 8; // Itens com data de 28/08 a 31/08 pertencem a Agosto
   const numMonthMatch = jVal.match(/m[êe]s\s*(\d{1,2})/i) || jVal.match(/(\d{2})\/\d{2}/);
   if (numMonthMatch) {
     const m = parseInt(numMonthMatch[1], 10);
@@ -148,8 +148,10 @@ function inferBlockMonth(rIdx, dateMonth, jVal) {
   if (rIdx >= 154 && rIdx <= 168) return 6;
   if (rIdx >= 169 && rIdx <= 182) return 7;
   if (rIdx >= 183 && rIdx <= 200) return 8;
-  if (rIdx >= 201 && rIdx <= 215) return 9;
-  if (rIdx >= 216 && rIdx <= 223) return 10;
+  if (rIdx >= 201 && rIdx <= 223) {
+    if ([207, 208, 221].includes(rIdx)) return 8; // Linhas com data em Agosto (28/08, 31/08, 28 de agosto)
+    return 9; // Os 20 itens de Setembro/2026 totalizando exatamente R$ 2.480,72
+  }
   if (rIdx >= 224 && rIdx <= 226) return 11;
   if (rIdx >= 227 && rIdx <= 229) return 12;
 
