@@ -1,0 +1,21 @@
+{
+  "name": "gastosviniapp",
+  "version": "1.0.0",
+  "description": "Dashboard e App de Controle de Gastos — Poupança Baby (Vini), integrado em tempo real com Google Sheets (Colunas F, G, H, I, J).",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/giovaniivini-bit/gastosviniapp.git"
+  },
+  "keywords": [
+    "dashboard",
+    "poupanca-baby",
+    "gastos-vini",
+    "google-sheets"
+  ],
+  "author": "Giovani & Bruna",
+  "license": "ISC"
+}

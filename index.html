@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gastos Vini App — Dashboard Poupança Baby</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root {
+      --background: #0b0f19;
+      --card: #111827;
+      --foreground: #f8fafc;
+      --muted-foreground: #94a3b8;
+      --border: #1e293b;
+      --primary: #10b981;
+      --primary-foreground: #052e16;
+      --secondary: #1e293b;
+    }
+    .bar-col:hover .bar-tooltip {
+      opacity: 1;
+      transform: translateX(-50%) translateY(-4px);
+      pointer-events: auto;
+    }
+    .custom-scroll::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    .custom-scroll::-webkit-scrollbar-thumb {
+      background: var(--border);
+      border-radius: 9999px;
+    }
+    @keyframes spin-slow {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    .animate-spin-sync {
+      animation: spin-slow 0.9s linear infinite;
+    }
+  </style>
+</head>
+<body class="bg-[var(--background)] text-[var(--foreground)] antialiased p-4 md:p-6 min-h-screen">
+  <!-- Toast Notification -->
+  <div id="syncToast" class="fixed bottom-5 right-5 z-50 hidden transform transition-all duration-300 bg-emerald-600 text-white px-4 py-3 rounded-xl shadow-xl border border-emerald-400/30 flex items-center gap-2.5 text-xs md:text-sm font-medium">
+    <span id="syncToastIcon">✅</span>
+    <span id="syncToastMsg">Planilha atualizada com sucesso!</span>
+  </div>
+
+  <div class="max-w-7xl mx-auto space-y-6">
+
+    <!-- Header -->
+    <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-5 shadow-sm flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+      <div>
+        <div class="flex flex-wrap items-center gap-2 mb-1.5">
+          <span class="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 flex items-center gap-1.5">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            2ª Aba: Poupança Baby (Ao Vivo)
+          </span>
+          <span class="px-2.5 py-0.5 rounded-full text-xs font-medium bg-[var(--secondary)] text-[var(--muted-foreground)] border border-[var(--border)]">
+            Colunas F · G · H · I · J
+          </span>
+          <span id="lastSyncBadge" class="px-2.5 py-0.5 rounded-full text-xs font-medium bg-[var(--background)] text-[var(--muted-foreground)] border border-[var(--border)]">
+            Sincronizado com Google Sheets
+          </span>
+        </div>
+        <h1 class="text-xl md:text-2xl font-bold tracking-tight text-[var(--foreground)]">
+          Gastos Vini App — Dashboard Poupança Baby
+        </h1>
+        <p class="text-xs md:text-sm text-[var(--muted-foreground)] mt-0.5">
+          Base de dados conectada ao Google Sheets • Gráfico mensal e itens detalhados dentro de cada mês
+        </p>
+      </div>
+
+      <!-- Actions: Sync Sheet + Open Sheet + Grouping Mode -->
+      <div class="flex flex-wrap items-center gap-2.5">
+        <!-- Botão Atualizar Planilha -->
+        <button
+          id="btnSyncSheet"
+          onclick="syncFromSheet()"
+          class="px-4 py-2 rounded-xl font-semibold text-xs md:text-sm bg-emerald-500 hover:bg-emerald-400 text-slate-950 shadow-md shadow-emerald-500/10 transition-all flex items-center gap-2 cursor-pointer active:scale-95"
+        >
+          <svg id="syncIcon" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+          </svg>
+          <span id="syncBtnText">Atualizar Planilha</span>
+        </button>
+
+        <!-- Botão Abrir Planilha Google -->
+        <a
+          href="https://docs.google.com/spreadsheets/d/1Z60EkXO4zn6JEtLMeQ7HvTrIpqeuTgQEt73m2DZX1wY/edit"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="px-3.5 py-2 rounded-xl font-medium text-xs bg-[var(--background)] hover:bg-[var(--secondary)] text-[var(--foreground)] border border-[var(--border)] transition flex items-center gap-1.5"
+        >
+          <span>📊 Abrir Planilha</span>
+        </a>
+
+        <!-- Grouping Mode Switcher -->
+        <div class="bg-[var(--background)] border border-[var(--border)] rounded-xl p-1 flex items-center text-xs">
+          <button id="btnModeBloco" onclick="setGroupMode('mesBloco')" class="px-3 py-1.5 rounded-lg font-medium transition-all bg-[var(--primary)] text-[var(--primary-foreground)] shadow-sm">
+            Mês do Bloco / Competência
+          </button>
+          <button id="btnModeData" onclick="setGroupMode('mesData')" class="px-3 py-1.5 rounded-lg font-medium transition-all text-[var(--muted-foreground)] hover:text-[var(--foreground)]">
+            Mês da Data (Col. H/I)
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- KPI Cards -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      <!-- KPI 1: Total Gastos -->
+      <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 shadow-sm">
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-medium text-[var(--muted-foreground)] uppercase tracking-wider">Total de Gastos (Col. G)</span>
+          <span class="text-xs px-2 py-0.5 rounded-md bg-emerald-500/10 text-emerald-400 font-medium" id="kpiTotalCount">226 itens</span>
+        </div>
+        <div class="text-2xl font-bold mt-2 text-[var(--foreground)]" id="kpiTotalValor">R$ 43.151,77</div>
+        <p class="text-xs text-[var(--muted-foreground)] mt-1" id="kpiTotalSub">
+          Fórmula G231 na planilha: <strong class="text-[var(--foreground)]" id="kpiFormulaVal">R$ 42.781,77</strong>
+        </p>
+      </div>
+
+      <!-- KPI 2: Situação (Col F) -->
+      <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 shadow-sm">
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-medium text-[var(--muted-foreground)] uppercase tracking-wider">Situação (Col. F)</span>
+          <span class="text-xs px-2 py-0.5 rounded-md bg-blue-500/10 text-blue-400 font-medium" id="kpiPagoPct">62,3% marcado PAGO</span>
+        </div>
+        <div class="mt-2 flex items-baseline justify-between gap-2">
+          <div>
+            <div class="text-lg font-bold text-emerald-400" id="kpiPagoValor">R$ 26.867,75</div>
+            <div class="text-xs text-[var(--muted-foreground)]" id="kpiPagoCount">PAGO (125 itens)</div>
+          </div>
+          <div class="text-right">
+            <div class="text-lg font-bold text-sky-400" id="kpiAbertoValor">R$ 16.284,02</div>
+            <div class="text-xs text-[var(--muted-foreground)]" id="kpiAbertoCount">Sem status (101 itens)</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- KPI 3: Média Mensal -->
+      <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 shadow-sm">
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-medium text-[var(--muted-foreground)] uppercase tracking-wider">Média por Mês</span>
+          <span class="text-xs px-2 py-0.5 rounded-md bg-[var(--secondary)] text-[var(--muted-foreground)] font-medium" id="kpiMesesCount">21 meses</span>
+        </div>
+        <div class="text-2xl font-bold mt-2 text-[var(--foreground)]" id="kpiMediaMensal">R$ 2.054,85</div>
+        <p class="text-xs text-[var(--muted-foreground)] mt-1" id="kpiTicketMedio">
+          Ticket médio por gasto: <strong class="text-[var(--foreground)]">R$ 190,94</strong>
+        </p>
+      </div>
+
+      <!-- KPI 4: Maior Gasto Mensal -->
+      <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 shadow-sm">
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-medium text-[var(--muted-foreground)] uppercase tracking-wider">Pico de Gastos</span>
+          <span class="text-xs px-2 py-0.5 rounded-md bg-rose-500/10 text-rose-400 font-medium" id="kpiPicoMes">Dezembro/2025</span>
+        </div>
+        <div class="text-2xl font-bold mt-2 text-[var(--foreground)]" id="kpiPicoValor">R$ 6.877,07</div>
+        <p class="text-xs text-[var(--muted-foreground)] mt-1" id="kpiPicoSub">
+          Destaque: Exame 3D e parto cesárea (R$ 3.250,00)
+        </p>
+      </div>
+    </div>
+
+    <!-- Filters Bar -->
+    <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 shadow-sm flex flex-col md:flex-row items-stretch md:items-center justify-between gap-3">
+      <div class="flex flex-wrap items-center gap-2">
+        <!-- Year Filter -->
+        <div class="flex items-center gap-1 bg-[var(--background)] border border-[var(--border)] rounded-lg p-1 text-xs">
+          <span class="px-2 text-[var(--muted-foreground)] font-medium">Ano (Col. I):</span>
+          <button onclick="setYearFilter('ALL')" id="yr_ALL" class="px-2.5 py-1 rounded-md font-medium bg-[var(--primary)] text-[var(--primary-foreground)]">Todos</button>
+          <button onclick="setYearFilter('2025')" id="yr_2025" class="px-2.5 py-1 rounded-md font-medium text-[var(--muted-foreground)] hover:text-[var(--foreground)]">2025</button>
+          <button onclick="setYearFilter('2026')" id="yr_2026" class="px-2.5 py-1 rounded-md font-medium text-[var(--muted-foreground)] hover:text-[var(--foreground)]">2026</button>
+        </div>
+
+        <!-- Status Filter -->
+        <div class="flex items-center gap-1 bg-[var(--background)] border border-[var(--border)] rounded-lg p-1 text-xs">
+          <span class="px-2 text-[var(--muted-foreground)] font-medium">Situação (Col. F):</span>
+          <button onclick="setStatusFilter('ALL')" id="st_ALL" class="px-2.5 py-1 rounded-md font-medium bg-[var(--primary)] text-[var(--primary-foreground)]">Todos</button>
+          <button onclick="setStatusFilter('PAGO')" id="st_PAGO" class="px-2.5 py-1 rounded-md font-medium text-[var(--muted-foreground)] hover:text-[var(--foreground)]">PAGO</button>
+          <button onclick="setStatusFilter('ABERTO')" id="st_ABERTO" class="px-2.5 py-1 rounded-md font-medium text-[var(--muted-foreground)] hover:text-[var(--foreground)]">Sem PAGO</button>
+        </div>
+
+        <!-- Month Quick Filter -->
+        <select id="monthSelect" onchange="setMonthFilter(this.value)" class="bg-[var(--background)] border border-[var(--border)] text-[var(--foreground)] rounded-lg px-3 py-1.5 text-xs font-medium focus:outline-none">
+          <option value="ALL">Todos os Meses</option>
+        </select>
+      </div>
+
+      <!-- Search Input -->
+      <div class="relative flex-1 max-w-md">
+        <input
+          type="text"
+          id="searchInput"
+          oninput="setSearchQuery(this.value)"
+          placeholder="Buscar item na Coluna J (ex: Unimed, Vacina, Fralda, Leite, Uber)..."
+          class="w-full bg-[var(--background)] border border-[var(--border)] text-[var(--foreground)] placeholder-[var(--muted-foreground)] rounded-lg pl-3 pr-8 py-1.5 text-xs focus:outline-none focus:ring-1 focus:ring-[var(--primary)]"
+        />
+        <button id="clearSearchBtn" onclick="clearFilters()" class="hidden absolute right-2 top-1/2 -translate-y-1/2 text-xs text-[var(--muted-foreground)] hover:text-[var(--foreground)]">
+          Limpar
+        </button>
+      </div>
+    </div>
+
+    <!-- Monthly Expenses Chart Card -->
+    <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-5 shadow-sm">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+        <div>
+          <h2 class="text-base md:text-lg font-bold text-[var(--foreground)]">
+            Gráfico de Gastos por Mês
+          </h2>
+          <p class="text-xs text-[var(--muted-foreground)]">
+            Clique em qualquer barra de mês para filtrar os itens daquele mês
+          </p>
+        </div>
+        <div class="flex items-center gap-4 text-xs">
+          <div class="flex items-center gap-1.5">
+            <span class="w-3 h-3 rounded-sm bg-emerald-500 inline-block"></span>
+            <span class="text-[var(--muted-foreground)]">PAGO (Col. F)</span>
+          </div>
+          <div class="flex items-center gap-1.5">
+            <span class="w-3 h-3 rounded-sm bg-sky-500 inline-block"></span>
+            <span class="text-[var(--muted-foreground)]">Sem marcação PAGO (Col. F)</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bar Chart Container -->
+      <div class="overflow-x-auto custom-scroll pb-2">
+        <div id="chartContainer" class="min-w-[780px] h-72 flex items-end gap-2 pt-10 pb-8 px-2 border-b border-[var(--border)] relative">
+          <!-- Rendered by JS -->
+        </div>
+      </div>
+
+      <!-- Year Summary Strip -->
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-4 pt-2">
+        <div class="bg-[var(--background)] border border-[var(--border)] rounded-xl p-3 flex items-center justify-between">
+          <div>
+            <span class="text-xs text-[var(--muted-foreground)]">Total em 2025 (Abr–Dez)</span>
+            <div class="text-sm font-bold text-[var(--foreground)]" id="sum2025">R$ 17.300,10</div>
+          </div>
+          <span class="text-xs px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 font-medium" id="cnt2025">80 itens</span>
+        </div>
+        <div class="bg-[var(--background)] border border-[var(--border)] rounded-xl p-3 flex items-center justify-between">
+          <div>
+            <span class="text-xs text-[var(--muted-foreground)]">Total em 2026 (Jan–Dez)</span>
+            <div class="text-sm font-bold text-[var(--foreground)]" id="sum2026">R$ 25.851,67</div>
+          </div>
+          <span class="text-xs px-2 py-0.5 rounded bg-sky-500/10 text-sky-400 font-medium" id="cnt2026">146 itens</span>
+        </div>
+        <div class="bg-[var(--background)] border border-[var(--border)] rounded-xl p-3 flex items-center justify-between">
+          <div>
+            <span class="text-xs text-[var(--muted-foreground)]">Filtro Selecionado</span>
+            <div class="text-sm font-bold text-[var(--foreground)]" id="sumFiltered">R$ 43.151,77</div>
+          </div>
+          <button onclick="clearFilters()" class="text-xs px-2.5 py-1 rounded-lg border border-[var(--border)] hover:bg-[var(--card)] text-[var(--muted-foreground)] hover:text-[var(--foreground)] transition">
+            Resetar Filtros
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Category Summary Strip (Derived from Col J) -->
+    <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-5 shadow-sm">
+      <div class="flex items-center justify-between mb-3">
+        <div>
+          <h3 class="text-sm font-bold text-[var(--foreground)]">Resumo por Tipo de Item (Coluna J)</h3>
+          <p class="text-xs text-[var(--muted-foreground)]">Clique em uma categoria para filtrar os itens dentro de cada mês</p>
+        </div>
+        <span id="activeCatBadge" class="hidden text-xs px-2.5 py-0.5 rounded-full bg-[var(--primary)] text-[var(--primary-foreground)] font-medium cursor-pointer" onclick="setCategoryFilter('ALL')">
+          Filtro ativo ✕
+        </span>
+      </div>
+      <div id="categoryGrid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2.5">
+        <!-- Rendered by JS -->
+      </div>
+    </div>
+
+    <!-- Monthly Breakdown Section -->
+    <div class="space-y-4">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+        <div>
+          <h2 class="text-lg font-bold text-[var(--foreground)]">
+            Itens Gastos Separados por Mês
+          </h2>
+          <p class="text-xs text-[var(--muted-foreground)]">
+            Detalhamento completo por mês com as colunas F (Situação), G (Saídas poupança), H (Dia), I (Ano) e J (Item)
+          </p>
+        </div>
+        <div class="flex items-center gap-2">
+          <select id="sortSelect" onchange="setSortOrder(this.value)" class="bg-[var(--card)] border border-[var(--border)] text-[var(--foreground)] rounded-lg px-3 py-1.5 text-xs font-medium">
+            <option value="row">Ordenar itens: Ordem da Planilha</option>
+            <option value="val_desc">Ordenar itens: Maior Valor (Col. G)</option>
+            <option value="val_asc">Ordenar itens: Menor Valor (Col. G)</option>
+          </select>
+          <button onclick="toggleAllMonths(true)" class="px-3 py-1.5 rounded-lg bg-[var(--card)] border border-[var(--border)] text-xs font-medium hover:bg-[var(--secondary)] transition">
+            Expandir Todos
+          </button>
+          <button onclick="toggleAllMonths(false)" class="px-3 py-1.5 rounded-lg bg-[var(--card)] border border-[var(--border)] text-xs font-medium hover:bg-[var(--secondary)] transition">
+            Recolher Todos
+          </button>
+        </div>
+      </div>
+
+      <div id="monthsList" class="space-y-4">
+        <!-- Rendered by JS -->
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    const MONTH_NAMES = {
+      "01": "Janeiro", "02": "Fevereiro", "03": "Março", "04": "Abril",
+      "05": "Maio", "06": "Junho", "07": "Julho", "08": "Agosto",
+      "09": "Setembro", "10": "Outubro", "11": "Novembro", "12": "Dezembro"
+    };
+    const MONTH_SHORT = {
+      "01": "Jan", "02": "Fev", "03": "Mar", "04": "Abr",
+      "05": "Mai", "06": "Jun", "07": "Jul", "08": "Ago",
+      "09": "Set", "10": "Out", "11": "Nov", "12": "Dez"
+    };
+
+    function classifyItem(desc) {
+      const s = (desc || "").toLowerCase();
+      if (s.includes("vacina") || s.includes("unimed") || s.includes("exame") || s.includes("parto") || s.includes("consulta") || s.includes("hospital") || s.includes("pressão") || s.includes("oximetro") || s.includes("nebulizador") || s.includes("injeção")) {
+        return "Saúde, Exames & Vacinas";
+      }
+      if (s.includes("farmácia") || s.includes("farmacia") || s.includes("remédio") || s.includes("remedio") || s.includes("raia") || s.includes("panvel") || s.includes("catarinense") || s.includes("probiótico") || s.includes("ferro") || s.includes("regenesis") || s.includes("simoneticona") || s.includes("colic") || s.includes("febre") || s.includes("dente")) {
+        return "Farmácia & Medicamentos";
+      }
+      if (s.includes("fralda") || s.includes("lenço") || s.includes("pomada") || s.includes("algodão") || s.includes("sabonete") || s.includes("oboticario")) {
+        return "Fraldas & Higiene";
+      }
+      if (s.includes("batizado") || s.includes("aniver") || s.includes("fotos") || s.includes("fotografa") || s.includes("make") || s.includes("saldagos") || s.includes("bebidas") || s.includes("comida") || s.includes("balões")) {
+        return "Festas, Batizado & Fotos";
+      }
+      if (s.includes("roupa") || s.includes("carters") || s.includes("cater") || s.includes("oneda") || s.includes("havan") || s.includes("meia") || s.includes("pijama") || s.includes("sapatinho") || s.includes("tenis") || s.includes("jaqueta") || s.includes("babador") || s.includes("calcinha") || s.includes("sutia") || s.includes("toca")) {
+        return "Roupas & Enxoval";
+      }
+      if (s.includes("uber") || s.includes("gasolina") || s.includes("estacionamento")) {
+        return "Transporte (Uber / Gasolina)";
+      }
+      if (s.includes("conta vini") || s.includes("cota do mês") || s.includes("abertura conta")) {
+        return "Poupança / Previdência Vini";
+      }
+      if (s.includes("leite") || s.includes("mamadeira") || s.includes("marmita") || s.includes("forminhas") || s.includes("lancheira") || s.includes("extrator")) {
+        return "Leite & Alimentação";
+      }
+      if (s.includes("taping") || s.includes("drenagem")) {
+        return "Cuidados Pós-Parto Mamãe";
+      }
+      return "Acessórios, Quarto & Brinquedos";
+    }
+
+    let ITEMS = [];
+    let sheetFormulaTotal = 42781.77;
+
+    let state = {
+      groupMode: "mesBloco",
+      yearFilter: "ALL",
+      statusFilter: "ALL",
+      monthFilter: "ALL",
+      categoryFilter: "ALL",
+      searchQuery: "",
+      sortOrder: "row",
+      expandedMonths: new Set()
+    };
+
+    function mapRecordsToItems(rawRecords) {
+      return rawRecords.map(r => ({
+        row: r[0],
+        situacao: r[1],
+        isPago: r[1] === "PAGO",
+        valor: Number(r[2]) || 0,
+        diaRaw: r[3],
+        dataDisplay: r[4],
+        ano: String(r[5]),
+        mesData: r[6],
+        mesBloco: r[7],
+        item: r[8],
+        categoria: classifyItem(r[8])
+      }));
+    }
+
+    function showToast(msg, isError = false) {
+      const toast = document.getElementById("syncToast");
+      const icon = document.getElementById("syncToastIcon");
+      const text = document.getElementById("syncToastMsg");
+      toast.className = `fixed bottom-5 right-5 z-50 transform transition-all duration-300 ${isError ? "bg-rose-600 border-rose-400/30" : "bg-emerald-600 border-emerald-400/30"} text-white px-4 py-3 rounded-xl shadow-xl border flex items-center gap-2.5 text-xs md:text-sm font-medium`;
+      icon.textContent = isError ? "⚠️" : "✅";
+      text.textContent = msg;
+      toast.classList.remove("hidden");
+      setTimeout(() => {
+        toast.classList.add("hidden");
+      }, 4000);
+    }
+
+    function updateSyncTimestamp(isoStr) {
+      if (!isoStr) return;
+      const dt = new Date(isoStr);
+      const formatted = dt.toLocaleString("pt-BR", {
+        day: "2-digit", month: "2-digit", year: "numeric",
+        hour: "2-digit", minute: "2-digit", second: "2-digit"
+      });
+      document.getElementById("lastSyncBadge").textContent = `Última leitura: ${formatted}`;
+    }
+
+    async function loadInitialData() {
+      try {
+        const res = await fetch("/api/expenses");
+        const data = await res.json();
+        if (data.ok && Array.isArray(data.records)) {
+          ITEMS = mapRecordsToItems(data.records);
+          if (data.sheetFormulaTotal !== undefined) sheetFormulaTotal = data.sheetFormulaTotal;
+          updateSyncTimestamp(data.lastSync);
+          renderAll(true);
+        }
+      } catch (err) {
+        console.error("Erro ao carregar dados iniciais:", err);
+      }
+    }
+
+    async function syncFromSheet() {
+      const btn = document.getElementById("btnSyncSheet");
+      const icon = document.getElementById("syncIcon");
+      const txt = document.getElementById("syncBtnText");
+      btn.disabled = true;
+      icon.classList.add("animate-spin-sync");
+      txt.textContent = "Sincronizando...";
+
+      try {
+        const res = await fetch("/api/sync", { method: "POST" });
+        const data = await res.json();
+        if (!data.ok) throw new Error(data.error || "Falha ao sincronizar planilha");
+        ITEMS = mapRecordsToItems(data.records);
+        if (data.sheetFormulaTotal !== undefined) sheetFormulaTotal = data.sheetFormulaTotal;
+        updateSyncTimestamp(data.lastSync);
+        renderAll(false);
+        showToast(`Planilha sincronizada! ${data.totalItems} itens carregados (${formatBRL(data.totalAmount)}).`);
+      } catch (err) {
+        showToast("Erro ao sincronizar planilha: " + err.message, true);
+      } finally {
+        btn.disabled = false;
+        icon.classList.remove("animate-spin-sync");
+        txt.textContent = "Atualizar Planilha";
+      }
+    }
+
+    function formatBRL(val) {
+      return val.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
+    }
+
+    function formatMonthLabel(ym) {
+      const [y, m] = ym.split("-");
+      return `${MONTH_NAMES[m]}/${y}`;
+    }
+
+    function formatMonthShort(ym) {
+      const [y, m] = ym.split("-");
+      return `${MONTH_SHORT[m]}/${y.slice(2)}`;
+    }
+
+    function getFilteredItems(ignoreMonthFilter = false) {
+      return ITEMS.filter(it => {
+        if (state.yearFilter !== "ALL" && it.ano !== state.yearFilter) return false;
+        if (state.statusFilter === "PAGO" && !it.isPago) return false;
+        if (state.statusFilter === "ABERTO" && it.isPago) return false;
+        if (state.categoryFilter !== "ALL" && it.categoria !== state.categoryFilter) return false;
+        if (!ignoreMonthFilter && state.monthFilter !== "ALL" && it[state.groupMode] !== state.monthFilter) return false;
+        if (state.searchQuery.trim() !== "") {
+          const q = state.searchQuery.toLowerCase();
+          const matchItem = it.item.toLowerCase().includes(q);
+          const matchDate = it.dataDisplay.toLowerCase().includes(q);
+          const matchCat = it.categoria.toLowerCase().includes(q);
+          if (!matchItem && !matchDate && !matchCat) return false;
+        }
+        return true;
+      });
+    }
+
+    function setGroupMode(mode) {
+      state.groupMode = mode;
+      state.monthFilter = "ALL";
+      const btnBloco = document.getElementById("btnModeBloco");
+      const btnData = document.getElementById("btnModeData");
+      if (mode === "mesBloco") {
+        btnBloco.className = "px-3 py-1.5 rounded-lg font-medium transition-all bg-[var(--primary)] text-[var(--primary-foreground)] shadow-sm";
+        btnData.className = "px-3 py-1.5 rounded-lg font-medium transition-all text-[var(--muted-foreground)] hover:text-[var(--foreground)]";
+      } else {
+        btnData.className = "px-3 py-1.5 rounded-lg font-medium transition-all bg-[var(--primary)] text-[var(--primary-foreground)] shadow-sm";
+        btnBloco.className = "px-3 py-1.5 rounded-lg font-medium transition-all text-[var(--muted-foreground)] hover:text-[var(--foreground)]";
+      }
+      renderAll(true);
+    }
+
+    function setYearFilter(yr) {
+      state.yearFilter = yr;
+      ["ALL", "2025", "2026"].forEach(k => {
+        const el = document.getElementById("yr_" + k);
+        if (k === yr) {
+          el.className = "px-2.5 py-1 rounded-md font-medium bg-[var(--primary)] text-[var(--primary-foreground)]";
+        } else {
+          el.className = "px-2.5 py-1 rounded-md font-medium text-[var(--muted-foreground)] hover:text-[var(--foreground)]";
+        }
+      });
+      renderAll(true);
+    }
+
+    function setStatusFilter(st) {
+      state.statusFilter = st;
+      ["ALL", "PAGO", "ABERTO"].forEach(k => {
+        const el = document.getElementById("st_" + k);
+        if (k === st) {
+          el.className = "px-2.5 py-1 rounded-md font-medium bg-[var(--primary)] text-[var(--primary-foreground)]";
+        } else {
+          el.className = "px-2.5 py-1 rounded-md font-medium text-[var(--muted-foreground)] hover:text-[var(--foreground)]";
+        }
+      });
+      renderAll(true);
+    }
+
+    function setMonthFilter(m) {
+      state.monthFilter = m;
+      document.getElementById("monthSelect").value = m;
+      if (m !== "ALL") {
+        state.expandedMonths.add(m);
+      }
+      renderAll(false);
+    }
+
+    function setCategoryFilter(cat) {
+      state.categoryFilter = state.categoryFilter === cat ? "ALL" : cat;
+      renderAll(true);
+    }
+
+    function setSearchQuery(q) {
+      state.searchQuery = q;
+      document.getElementById("clearSearchBtn").classList.toggle("hidden", !q.trim());
+      renderAll(true);
+    }
+
+    function setSortOrder(ord) {
+      state.sortOrder = ord;
+      renderAll(false);
+    }
+
+    function clearFilters() {
+      state.yearFilter = "ALL";
+      state.statusFilter = "ALL";
+      state.monthFilter = "ALL";
+      state.categoryFilter = "ALL";
+      state.searchQuery = "";
+      document.getElementById("searchInput").value = "";
+      document.getElementById("clearSearchBtn").classList.add("hidden");
+      setYearFilter("ALL");
+      setStatusFilter("ALL");
+      renderAll(true);
+    }
+
+    function toggleMonth(ym) {
+      if (state.expandedMonths.has(ym)) {
+        state.expandedMonths.delete(ym);
+      } else {
+        state.expandedMonths.add(ym);
+      }
+      renderMonthsList();
+    }
+
+    function toggleAllMonths(expand) {
+      const items = getFilteredItems(false);
+      const months = [...new Set(items.map(i => i[state.groupMode]))];
+      if (expand) {
+        months.forEach(m => state.expandedMonths.add(m));
+      } else {
+        state.expandedMonths.clear();
+      }
+      renderMonthsList();
+    }
+
+    function populateMonthSelect(months) {
+      const sel = document.getElementById("monthSelect");
+      const current = state.monthFilter;
+      sel.innerHTML = `<option value="ALL">Todos os Meses (${months.length})</option>` +
+        months.map(m => `<option value="${m}">${formatMonthLabel(m)}</option>`).join("");
+      sel.value = months.includes(current) ? current : "ALL";
+    }
+
+    function renderAll(resetExpanded = false) {
+      const chartItems = getFilteredItems(true);
+      const listItems = getFilteredItems(false);
+
+      const monthMap = {};
+      chartItems.forEach(it => {
+        const m = it[state.groupMode];
+        if (!monthMap[m]) {
+          monthMap[m] = { ym: m, total: 0, pago: 0, aberto: 0, count: 0, items: [] };
+        }
+        monthMap[m].total += it.valor;
+        if (it.isPago) monthMap[m].pago += it.valor;
+        else monthMap[m].aberto += it.valor;
+        monthMap[m].count += 1;
+        monthMap[m].items.push(it);
+      });
+
+      const sortedMonths = Object.keys(monthMap).sort();
+      populateMonthSelect(sortedMonths);
+
+      if (resetExpanded) {
+        state.expandedMonths = new Set(sortedMonths);
+      }
+
+      const totalVal = listItems.reduce((s, i) => s + i.valor, 0);
+      const pagoItems = listItems.filter(i => i.isPago);
+      const abertoItems = listItems.filter(i => !i.isPago);
+      const pagoVal = pagoItems.reduce((s, i) => s + i.valor, 0);
+      const abertoVal = abertoItems.reduce((s, i) => s + i.valor, 0);
+
+      const activeMonthsCount = new Set(listItems.map(i => i[state.groupMode])).size || 1;
+      const mediaMensal = totalVal / activeMonthsCount;
+      const ticketMedio = listItems.length ? totalVal / listItems.length : 0;
+
+      document.getElementById("kpiTotalValor").textContent = formatBRL(totalVal);
+      document.getElementById("kpiTotalCount").textContent = `${listItems.length} itens`;
+      document.getElementById("kpiFormulaVal").textContent = formatBRL(sheetFormulaTotal);
+      document.getElementById("kpiPagoValor").textContent = formatBRL(pagoVal);
+      document.getElementById("kpiPagoCount").textContent = `PAGO (${pagoItems.length} itens)`;
+      document.getElementById("kpiAbertoValor").textContent = formatBRL(abertoVal);
+      document.getElementById("kpiAbertoCount").textContent = `Sem status (${abertoItems.length} itens)`;
+      const pctPago = totalVal > 0 ? ((pagoVal / totalVal) * 100).toFixed(1).replace(".", ",") : "0,0";
+      document.getElementById("kpiPagoPct").textContent = `${pctPago}% marcado PAGO`;
+
+      document.getElementById("kpiMesesCount").textContent = `${activeMonthsCount} ${activeMonthsCount === 1 ? "mês" : "meses"}`;
+      document.getElementById("kpiMediaMensal").textContent = formatBRL(mediaMensal);
+      document.getElementById("kpiTicketMedio").innerHTML = `Ticket médio por gasto: <strong class="text-[var(--foreground)]">${formatBRL(ticketMedio)}</strong>`;
+
+      const listMonthMap = {};
+      listItems.forEach(it => {
+        const m = it[state.groupMode];
+        if (!listMonthMap[m]) listMonthMap[m] = { total: 0, items: [] };
+        listMonthMap[m].total += it.valor;
+        listMonthMap[m].items.push(it);
+      });
+      const listMonths = Object.keys(listMonthMap);
+      if (listMonths.length > 0) {
+        let peakM = listMonths[0];
+        listMonths.forEach(m => {
+          if (listMonthMap[m].total > listMonthMap[peakM].total) peakM = m;
+        });
+        const topItem = [...listMonthMap[peakM].items].sort((a, b) => b.valor - a.valor)[0];
+        document.getElementById("kpiPicoMes").textContent = formatMonthLabel(peakM);
+        document.getElementById("kpiPicoValor").textContent = formatBRL(listMonthMap[peakM].total);
+        document.getElementById("kpiPicoSub").textContent = topItem ? `Maior item: ${topItem.item.slice(0, 32)} (${formatBRL(topItem.valor)})` : "";
+      } else {
+        document.getElementById("kpiPicoMes").textContent = "-";
+        document.getElementById("kpiPicoValor").textContent = "R$ 0,00";
+        document.getElementById("kpiPicoSub").textContent = "Nenhum item encontrado";
+      }
+
+      const items2025 = listItems.filter(i => i.ano === "2025");
+      const items2026 = listItems.filter(i => i.ano === "2026");
+      document.getElementById("sum2025").textContent = formatBRL(items2025.reduce((s, i) => s + i.valor, 0));
+      document.getElementById("cnt2025").textContent = `${items2025.length} itens`;
+      document.getElementById("sum2026").textContent = formatBRL(items2026.reduce((s, i) => s + i.valor, 0));
+      document.getElementById("cnt2026").textContent = `${items2026.length} itens`;
+      document.getElementById("sumFiltered").textContent = formatBRL(totalVal);
+
+      renderChart(sortedMonths, monthMap);
+      renderCategories();
+      renderMonthsList();
+    }
+
+    function renderChart(sortedMonths, monthMap) {
+      const container = document.getElementById("chartContainer");
+      if (sortedMonths.length === 0) {
+        container.innerHTML = `<div class="w-full text-center text-sm text-[var(--muted-foreground)] self-center">Nenhum dado para exibir com os filtros atuais.</div>`;
+        return;
+      }
+
+      const maxVal = Math.max(...sortedMonths.map(m => monthMap[m].total), 1);
+
+      container.innerHTML = sortedMonths.map(ym => {
+        const d = monthMap[ym];
+        const totalH = Math.max((d.total / maxVal) * 185, d.total > 0 ? 6 : 2);
+        const pagoRatio = d.total > 0 ? d.pago / d.total : 0;
+        const pagoH = totalH * pagoRatio;
+        const abertoH = totalH - pagoH;
+        const isSelected = state.monthFilter === ym;
+        const opacityClass = state.monthFilter !== "ALL" && !isSelected ? "opacity-40 hover:opacity-80" : "opacity-100";
+
+        return `
+          <div onclick="setMonthFilter('${isSelected ? "ALL" : ym}')" class="bar-col flex-1 min-w-[34px] flex flex-col items-center justify-end h-full relative cursor-pointer group ${opacityClass} transition-all">
+            <div class="bar-tooltip opacity-0 pointer-events-none transition-all duration-150 absolute bottom-full mb-2 left-1/2 -translate-x-1/2 z-20 bg-[var(--card)] border border-[var(--border)] shadow-lg rounded-xl p-2.5 w-48 text-xs">
+              <div class="font-bold text-[var(--foreground)] border-b border-[var(--border)] pb-1 mb-1 flex justify-between">
+                <span>${formatMonthLabel(ym)}</span>
+                <span>${d.count} itens</span>
+              </div>
+              <div class="flex justify-between text-[var(--foreground)] font-semibold">
+                <span>Total:</span>
+                <span>${formatBRL(d.total)}</span>
+              </div>
+              ${d.pago > 0 ? `<div class="flex justify-between text-emerald-400 mt-0.5"><span>Pago:</span><span>${formatBRL(d.pago)}</span></div>` : ""}
+              ${d.aberto > 0 ? `<div class="flex justify-between text-sky-400 mt-0.5"><span>Sem PAGO:</span><span>${formatBRL(d.aberto)}</span></div>` : ""}
+            </div>
+
+            <span class="text-xs font-semibold text-[var(--muted-foreground)] group-hover:text-[var(--foreground)] mb-1 whitespace-nowrap">
+              ${d.total >= 1000 ? (d.total / 1000).toFixed(1).replace(".", ",") + "k" : Math.round(d.total)}
+            </span>
+
+            <div class="w-full max-w-[34px] rounded-t-lg overflow-hidden flex flex-col justify-end shadow-sm ring-offset-1 ${isSelected ? "ring-2 ring-[var(--primary)]" : ""}" style="height: ${totalH}px;">
+              ${abertoH > 0 ? `<div class="w-full bg-sky-500 transition-all" style="height: ${abertoH}px;"></div>` : ""}
+              ${pagoH > 0 ? `<div class="w-full bg-emerald-500 transition-all" style="height: ${pagoH}px;"></div>` : ""}
+            </div>
+
+            <span class="text-xs font-medium ${isSelected ? "text-[var(--foreground)] font-bold underline" : "text-[var(--muted-foreground)]"} mt-2 whitespace-nowrap">
+              ${formatMonthShort(ym)}
+            </span>
+          </div>
+        `;
+      }).join("");
+    }
+
+    function renderCategories() {
+      const baseItems = ITEMS.filter(it => {
+        if (state.yearFilter !== "ALL" && it.ano !== state.yearFilter) return false;
+        if (state.statusFilter === "PAGO" && !it.isPago) return false;
+        if (state.statusFilter === "ABERTO" && it.isPago) return false;
+        if (state.monthFilter !== "ALL" && it[state.groupMode] !== state.monthFilter) return false;
+        return true;
+      });
+
+      const catMap = {};
+      baseItems.forEach(it => {
+        if (!catMap[it.categoria]) catMap[it.categoria] = { total: 0, count: 0 };
+        catMap[it.categoria].total += it.valor;
+        catMap[it.categoria].count += 1;
+      });
+
+      const badge = document.getElementById("activeCatBadge");
+      if (state.categoryFilter !== "ALL") {
+        badge.classList.remove("hidden");
+        badge.textContent = `Categoria: ${state.categoryFilter} ✕`;
+      } else {
+        badge.classList.add("hidden");
+      }
+
+      const sortedCats = Object.entries(catMap).sort((a, b) => b[1].total - a[1].total);
+      const grid = document.getElementById("categoryGrid");
+      grid.innerHTML = sortedCats.map(([cat, info]) => {
+        const active = state.categoryFilter === cat;
+        return `
+          <button onclick="setCategoryFilter('${cat}')" class="text-left p-3 rounded-xl border transition-all ${active ? "bg-[var(--primary)] text-[var(--primary-foreground)] border-[var(--primary)] shadow-sm" : "bg-[var(--background)] border-[var(--border)] hover:border-[var(--muted-foreground)]"}">
+            <div class="text-xs font-semibold truncate">${cat}</div>
+            <div class="text-sm font-bold mt-1">${formatBRL(info.total)}</div>
+            <div class="text-xs ${active ? "opacity-90" : "text-[var(--muted-foreground)]"} mt-0.5">${info.count} ${info.count === 1 ? "item" : "itens"}</div>
+          </button>
+        `;
+      }).join("");
+    }
+
+    function renderMonthsList() {
+      const items = getFilteredItems(false);
+      const totalAll = items.reduce((s, i) => s + i.valor, 0) || 1;
+
+      const monthGroups = {};
+      items.forEach(it => {
+        const m = it[state.groupMode];
+        if (!monthGroups[m]) monthGroups[m] = [];
+        monthGroups[m].push(it);
+      });
+
+      const sortedMonths = Object.keys(monthGroups).sort();
+      const container = document.getElementById("monthsList");
+
+      if (sortedMonths.length === 0) {
+        container.innerHTML = `
+          <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-8 text-center">
+            <p class="text-sm font-medium text-[var(--foreground)]">Nenhum item encontrado para os filtros selecionados.</p>
+            <button onclick="clearFilters()" class="mt-3 px-4 py-1.5 rounded-lg bg-[var(--primary)] text-[var(--primary-foreground)] text-xs font-medium">
+              Limpar Filtros
+            </button>
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = sortedMonths.map(ym => {
+        const mItems = [...monthGroups[ym]];
+        if (state.sortOrder === "val_desc") mItems.sort((a, b) => b.valor - a.valor);
+        else if (state.sortOrder === "val_asc") mItems.sort((a, b) => a.valor - b.valor);
+        else mItems.sort((a, b) => a.row - b.row);
+
+        const mTotal = mItems.reduce((s, i) => s + i.valor, 0);
+        const mPago = mItems.filter(i => i.isPago).reduce((s, i) => s + i.valor, 0);
+        const mAberto = mTotal - mPago;
+        const maxItemVal = Math.max(...mItems.map(i => i.valor), 1);
+        const pctOfTotal = ((mTotal / totalAll) * 100).toFixed(1).replace(".", ",");
+        const isExpanded = state.expandedMonths.has(ym);
+
+        return `
+          <div id="month_card_${ym}" class="bg-[var(--card)] border border-[var(--border)] rounded-2xl overflow-hidden shadow-sm">
+            <button onclick="toggleMonth('${ym}')" class="w-full p-4 md:px-5 flex flex-col sm:flex-row sm:items-center justify-between gap-3 hover:bg-[var(--secondary)]/40 transition text-left">
+              <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-xl bg-[var(--background)] border border-[var(--border)] flex items-center justify-center font-bold text-xs text-[var(--foreground)]">
+                  ${ym.split("-")[1]}/${ym.split("-")[0].slice(2)}
+                </div>
+                <div>
+                  <div class="flex items-center gap-2">
+                    <h3 class="text-base font-bold text-[var(--foreground)]">${formatMonthLabel(ym)}</h3>
+                    <span class="px-2 py-0.5 rounded-full text-xs font-medium bg-[var(--background)] border border-[var(--border)] text-[var(--muted-foreground)]">
+                      ${mItems.length} ${mItems.length === 1 ? "item" : "itens"}
+                    </span>
+                  </div>
+                  <div class="flex flex-wrap items-center gap-3 text-xs text-[var(--muted-foreground)] mt-0.5">
+                    <span>Representa <strong class="text-[var(--foreground)]">${pctOfTotal}%</strong> do período exibido</span>
+                    ${mPago > 0 ? `<span class="text-emerald-400">● Pago: ${formatBRL(mPago)}</span>` : ""}
+                    ${mAberto > 0 ? `<span class="text-sky-400">● Sem PAGO: ${formatBRL(mAberto)}</span>` : ""}
+                  </div>
+                </div>
+              </div>
+
+              <div class="flex items-center justify-between sm:justify-end gap-4">
+                <div class="text-right">
+                  <div class="text-xs text-[var(--muted-foreground)]">Total do Mês (Col. G)</div>
+                  <div class="text-lg font-bold text-[var(--foreground)]">${formatBRL(mTotal)}</div>
+                </div>
+                <span class="text-xs px-2.5 py-1 rounded-lg bg-[var(--background)] border border-[var(--border)] text-[var(--muted-foreground)] font-medium">
+                  ${isExpanded ? "Ocultar ▲" : "Ver itens ▼"}
+                </span>
+              </div>
+            </button>
+
+            ${isExpanded ? `
+              <div class="border-t border-[var(--border)] overflow-x-auto custom-scroll">
+                <table class="w-full text-left border-collapse">
+                  <thead>
+                    <tr class="bg-[var(--background)]/60 text-[var(--muted-foreground)] text-xs border-b border-[var(--border)]">
+                      <th class="py-2.5 px-4 font-semibold w-16">Linha</th>
+                      <th class="py-2.5 px-3 font-semibold w-28">Col. F (Situação)</th>
+                      <th class="py-2.5 px-3 font-semibold w-36">Col. H / I (Dia/Ano)</th>
+                      <th class="py-2.5 px-4 font-semibold">Col. J (Item / Descrição do Gasto)</th>
+                      <th class="py-2.5 px-4 font-semibold text-right w-44">Col. G (Saídas Poupança)</th>
+                    </tr>
+                  </thead>
+                  <tbody class="divide-y divide-[var(--border)] text-xs md:text-sm">
+                    ${mItems.map(it => {
+                      const barW = Math.max((it.valor / maxItemVal) * 100, it.valor > 0 ? 4 : 0);
+                      let badgeHtml = "";
+                      if (it.situacao === "PAGO") {
+                        badgeHtml = `<span class="px-2 py-0.5 rounded-md text-xs font-semibold bg-emerald-500/15 text-emerald-400 border border-emerald-500/30">PAGO</span>`;
+                      } else if (it.situacao === "3550") {
+                        badgeHtml = `<span class="px-2 py-0.5 rounded-md text-xs font-semibold bg-amber-500/15 text-amber-400 border border-amber-500/30" title="Valor 3550 anotado na célula F159">Obs: 3550</span>`;
+                      } else {
+                        badgeHtml = `<span class="px-2 py-0.5 rounded-md text-xs font-medium bg-[var(--background)] text-[var(--muted-foreground)] border border-[var(--border)]">Em aberto</span>`;
+                      }
+
+                      return `
+                        <tr class="hover:bg-[var(--secondary)]/30 transition">
+                          <td class="py-2.5 px-4 text-xs text-[var(--muted-foreground)] font-mono">#${it.row}</td>
+                          <td class="py-2.5 px-3">${badgeHtml}</td>
+                          <td class="py-2.5 px-3 text-xs text-[var(--muted-foreground)] whitespace-nowrap">${it.dataDisplay}</td>
+                          <td class="py-2.5 px-4">
+                            <div class="font-medium text-[var(--foreground)]">${it.item}</div>
+                            <div class="text-xs text-[var(--muted-foreground)] mt-0.5">${it.categoria}</div>
+                          </td>
+                          <td class="py-2.5 px-4 text-right">
+                            <div class="font-bold text-[var(--foreground)]">${formatBRL(it.valor)}</div>
+                            <div class="w-full bg-[var(--background)] h-1.5 rounded-full mt-1 overflow-hidden">
+                              <div class="h-full rounded-full ${it.isPago ? "bg-emerald-500" : "bg-sky-500"}" style="width: ${barW}%"></div>
+                            </div>
+                          </td>
+                        </tr>
+                      `;
+                    }).join("")}
+                  </tbody>
+                  <tfoot>
+                    <tr class="bg-[var(--background)]/80 font-bold text-xs md:text-sm border-t border-[var(--border)]">
+                      <td colspan="4" class="py-2.5 px-4 text-right text-[var(--muted-foreground)]">Subtotal de ${formatMonthLabel(ym)} (${mItems.length} itens):</td>
+                      <td class="py-2.5 px-4 text-right text-[var(--foreground)]">${formatBRL(mTotal)}</td>
+                    </tr>
+                  </tfoot>
+                </table>
+              </div>
+            ` : ""}
+          </div>
+        `;
+      }).join("");
+    }
+
+    loadInitialData();
+  </script>
+</body>
+</html>
