@@ -6,9 +6,11 @@
     "G (Saídas poupança)",
     "H (Dia)",
     "I (Ano)",
-    "J (Item)"
+    "J (Item)",
+    "K (Quem pagou)",
+    "L (Observação)"
   ],
-  "lastSync": "2026-10-05T01:09:49.285Z",
+  "lastSync": "2026-10-05T01:37:36.344Z",
   "totalItems": 226,
   "totalAmount": 43151.77,
   "sheetFormulaTotal": 42781.77,
@@ -22,7 +24,9 @@
       2025,
       "2025-04",
       "2025-04",
-      "Exame HCG"
+      "Exame HCG",
+      "Bruna",
+      "Descontado em conta"
     ],
     [
       3,
@@ -33,7 +37,9 @@
       2025,
       "2025-04",
       "2025-04",
-      "Farmácia park europeu"
+      "Farmácia park europeu",
+      "Bruna",
+      "Descontado em conta"
     ],
     [
       4,
@@ -44,7 +50,9 @@
       2025,
       "2025-04",
       "2025-04",
-      "Farmacia concórdia"
+      "Farmacia concórdia",
+      "Bruna",
+      "Descontado em conta"
     ],
     [
       5,
@@ -55,7 +63,9 @@
       2025,
       "2025-05",
       "2025-05",
-      "Chupeta transparente"
+      "Chupeta transparente",
+      "Bruna",
+      "Descontado em conta"
     ],
     [
       6,
@@ -66,7 +76,9 @@
       2025,
       "2025-04",
       "2025-04",
-      "Creme Anti estrias Farmácia"
+      "Creme Anti estrias Farmácia",
+      "Bruna",
+      "Descontado em conta"
     ],
     [
       7,
@@ -77,7 +89,9 @@
       2025,
       "2025-05",
       "2025-05",
-      "Remedios farmácia bnu"
+      "Remedios farmácia bnu",
+      "Giovani",
+      "Descontado em conta"
     ],
     [
       8,
@@ -88,7 +102,9 @@
       2025,
       "2025-05",
       "2025-05",
-      "Remedios farmácia bnu"
+      "Remedios farmácia bnu",
+      "Giovani",
+      "Descontado em conta"
     ],
     [
       9,
@@ -99,7 +115,9 @@
       2025,
       "2025-05",
       "2025-05",
-      "Cota do mês"
+      "Cota do mês",
+      "Viacredi",
+      "Descontado em conta"
     ],
     [
       10,
@@ -110,7 +128,9 @@
       2025,
       "2025-05",
       "2025-05",
-      "Uber médico"
+      "Uber médico",
+      "Bruna",
+      "Descontado em conta"
     ],
     [
       11,
@@ -121,7 +141,9 @@
       2025,
       "2025-05",
       "2025-05",
-      "Remédio 11 semanas + medidor pressão"
+      "Remédio 11 semanas + medidor pressão",
+      "Bruna",
+      "Descontado em conta"
     ],
     [
       12,
@@ -132,7 +154,9 @@
       2025,
       "2025-06",
       "2025-06",
-      "kit mamae e bebe/ papai e bebe"
+      "kit mamae e bebe/ papai e bebe",
+      "Bruna",
+      "Descontado em conta"
     ],
     [
       13,
@@ -143,7 +167,9 @@
       2025,
       "2025-06",
       "2025-06",
-      "Panvel - remedios mamae"
+      "Panvel - remedios mamae",
+      "Bruna",
+      "Descontado em conta"
     ],
     [
       14,
@@ -154,7 +180,9 @@
       2025,
       "2025-06",
       "2025-06",
-      "Coparticipação unimed 07/25"
+      "Coparticipação unimed 07/25",
+      "Bruna",
+      "Descontado em conta"
     ],
     [
       15,
@@ -165,7 +193,9 @@
       2025,
       "2025-06",
       "2025-06",
-      "Roupa loja cater's"
+      "Roupa loja cater's",
+      "Bruna",
+      "Descontado em conta"
     ],
     [
       16,
@@ -176,7 +206,9 @@
       2025,
       "2025-06",
       "2025-06",
-      "Bolsa maternidade + itens neném Amazon"
+      "Bolsa maternidade + itens neném Amazon",
+      "Bruna",
+      "Descontado em conta"
     ],
     [
       17,
@@ -187,7 +219,9 @@
       2025,
       "2025-07",
       "2025-07",
-      "Exame Sexagem"
+      "Exame Sexagem",
+      "Bruna",
+      "Descontado em conta"
     ],
     [
       18,
@@ -198,7 +232,9 @@
       2025,
       "2025-07",
       "2025-07",
-      "Itens bebe amazon"
+      "Itens bebe amazon",
+      "Bruna",
+      "Descontado em conta"
     ],
     [
       19,
@@ -209,7 +245,9 @@
       2025,
       "2025-07",
       "2025-07",
-      "Remédio regenesis 90 dias"
+      "Remédio regenesis 90 dias",
+      "Bruna",
+      "Descontado em conta"
     ],
     [
       20,
@@ -220,7 +258,9 @@
       2025,
       "2025-07",
       "2025-07",
-      "Pijama mamãe (conforme lista hospital)"
+      "Pijama mamãe (conforme lista hospital)",
+      "Bruna",
+      "Descontado em conta"
     ],
     [
       21,
@@ -231,7 +271,9 @@
       2025,
       "2025-07",
       "2025-07",
-      "Itens Maternidade mamãe (conforme lista hospital)"
+      "Itens Maternidade mamãe (conforme lista hospital)",
+      "Bruna",
+      "Descontado em conta"
     ],
     [
       22,
@@ -242,7 +284,9 @@
       2025,
       "2025-07",
       "2025-07",
-      "Sinal tratamento taping pós parto - Jessica"
+      "Sinal tratamento taping pós parto - Jessica",
+      "Bruna",
+      "Descontado em conta"
     ],
     [
       23,
@@ -253,7 +297,9 @@
       2025,
       "2025-08",
       "2025-08",
-      "Coparticipação unimed 08/25"
+      "Coparticipação unimed 08/25",
+      "Bruna",
+      "Descontado em conta"
     ],
     [
       24,
@@ -264,7 +310,9 @@
       2025,
       "2025-08",
       "2025-08",
-      "Compras itens farmácia + oboticário"
+      "Compras itens farmácia + oboticário",
+      "Bruna",
+      "Descontado em conta"
     ],
     [
       25,
@@ -275,7 +323,9 @@
       2025,
       "2025-08",
       "2025-08",
-      "Saquinhos organizadores + itens amazon"
+      "Saquinhos organizadores + itens amazon",
+      "Bruna",
+      "Descontado em conta"
     ],
     [
       26,
@@ -286,7 +336,9 @@
       2025,
       "2025-08",
       "2025-08",
-      "Toca e Luvas"
+      "Toca e Luvas",
+      "Bruna",
+      "Descontado em conta"
     ],
     [
       27,
@@ -297,7 +349,9 @@
       2025,
       "2025-08",
       "2025-08",
-      "Parcela 1 tratamento taping pós parto - Jessica"
+      "Parcela 1 tratamento taping pós parto - Jessica",
+      "Bruna",
+      "Descontado em conta"
     ],
     [
       28,
@@ -308,7 +362,9 @@
       2025,
       "2025-08",
       "2025-08",
-      "Sinal fotos gestante"
+      "Sinal fotos gestante",
+      "Bruna",
+      "Descontado em conta"
     ],
     [
       29,
@@ -319,7 +375,9 @@
       2025,
       "2025-08",
       "2025-08",
-      "Calcinha descartável + rosquinha seios"
+      "Calcinha descartável + rosquinha seios",
+      "Bruna",
+      "Descontado em conta"
     ],
     [
       30,
@@ -330,7 +388,9 @@
       2025,
       "2025-08",
       "2025-08",
-      "Berço Bebe + Extratora de leite + Frete"
+      "Berço Bebe + Extratora de leite + Frete",
+      "Bruna",
+      "Valor descontado das milhas - pago somente o frete / Descontado em conta"
     ],
     [
       31,
@@ -341,7 +401,9 @@
       2025,
       "2025-09",
       "2025-09",
-      "Coparticipação unimed 09/25"
+      "Coparticipação unimed 09/25",
+      "Bruna",
+      "Descontado em conta"
     ],
     [
       32,
@@ -352,7 +414,9 @@
       2025,
       "2025-08",
       "2025-08",
-      "Bola pilates"
+      "Bola pilates",
+      "Bruna",
+      "Descontado em conta"
     ],
     [
       33,
@@ -363,7 +427,9 @@
       2025,
       "2025-08",
       "2025-08",
-      "Almofada amamentação + ninho + bola pilates"
+      "Almofada amamentação + ninho + bola pilates",
+      "Bruna",
+      "Descontado em conta"
     ],
     [
       34,
@@ -374,7 +440,9 @@
       2025,
       "2025-08",
       "2025-08",
-      "Roupa e organizador fraldas"
+      "Roupa e organizador fraldas",
+      "Bruna",
+      "Descontado em conta"
     ],
     [
       35,
@@ -385,7 +453,9 @@
       2025,
       "2025-09",
       "2025-09",
-      "Presente padrinhos"
+      "Presente padrinhos",
+      "Bruna",
+      "Descontado em conta"
     ],
     [
       36,
@@ -396,7 +466,9 @@
       2025,
       "2025-08",
       "2025-08",
-      "Cota do mês"
+      "Cota do mês",
+      "Viacredi",
+      "Descontado em conta"
     ],
     [
       37,
@@ -407,7 +479,9 @@
       2025,
       "2025-09",
       "2025-09",
-      "colchão berço"
+      "colchão berço",
+      "Bruna",
+      "Descontado em conta"
     ],
     [
       38,
@@ -418,7 +492,9 @@
       2025,
       "2025-09",
       "2025-09",
-      "Lençol berço"
+      "Lençol berço",
+      "Bruna",
+      "Descontado em conta"
     ],
     [
       39,
@@ -429,7 +505,9 @@
       2025,
       "2025-09",
       "2025-09",
-      "Remédios - farmacia"
+      "Remédios - farmacia",
+      "Bruna",
+      "Descontado em conta"
     ],
     [
       40,
@@ -440,7 +518,9 @@
       2025,
       "2025-09",
       "2025-09",
-      "Uber curso banco de leite"
+      "Uber curso banco de leite",
+      "Bruna",
+      "Descontado em conta"
     ],
     [
       41,
@@ -451,7 +531,9 @@
       2025,
       "2025-09",
       "2025-09",
-      "Itens Maternidade mamãe (calcinhas + sutian amamentação)"
+      "Itens Maternidade mamãe (calcinhas + sutian amamentação)",
+      "Bruna",
+      "Descontado em conta"
     ],
     [
       42,
@@ -462,7 +544,9 @@
       2025,
       "2025-09",
       "2025-09",
-      "Valor faltante fotos gestante"
+      "Valor faltante fotos gestante",
+      "Bruna",
+      "Descontado em conta"
     ],
     [
       43,
@@ -473,7 +557,9 @@
       2025,
       "2025-09",
       "2025-09",
-      "Make a cabelo fotos gestante"
+      "Make a cabelo fotos gestante",
+      "Bruna",
+      "Descontado em conta"
     ],
     [
       44,
@@ -484,7 +570,9 @@
       2025,
       "2025-10",
       "2025-10",
-      "Coparticipação unimed 10/25"
+      "Coparticipação unimed 10/25",
+      "Bruna",
+      "Descontado em conta"
     ],
     [
       45,
@@ -495,7 +583,9 @@
       2025,
       "2025-09",
       "2025-09",
-      "Roupinhas oneda"
+      "Roupinhas oneda",
+      "Giovani",
+      "Descontado em conta"
     ],
     [
       46,
@@ -506,7 +596,9 @@
       2025,
       "2025-10",
       "2025-10",
-      "Cota do mês"
+      "Cota do mês",
+      "Viacredi",
+      "Descontado em conta"
     ],
     [
       47,
@@ -517,7 +609,9 @@
       2025,
       "2025-10",
       "2025-10",
-      "Remédios - farmacia"
+      "Remédios - farmacia",
+      "Bruna",
+      "Descontado em conta"
     ],
     [
       48,
@@ -528,7 +622,9 @@
       2025,
       "2025-12",
       "2025-10",
-      "Calcinha pós parto (tecido)"
+      "Calcinha pós parto (tecido)",
+      "Bruna",
+      "Descontado em conta"
     ],
     [
       49,
@@ -539,7 +635,9 @@
       2025,
       "2025-10",
       "2025-10",
-      "Uber exame (Bruna e Lilian - 17/10) e entrega 28/10"
+      "Uber exame (Bruna e Lilian - 17/10) e entrega 28/10",
+      "Bruna",
+      "Descontado em conta"
     ],
     [
       50,
@@ -550,7 +648,9 @@
       2025,
       "2025-11",
       "2025-11",
-      "Coparticipação unimed 11/25"
+      "Coparticipação unimed 11/25",
+      "Bruna",
+      "Sem coparticipação no mês de novembro"
     ],
     [
       51,
@@ -561,7 +661,9 @@
       2025,
       "2025-11",
       "2025-11",
-      "Tratamento drenagem prévio ao parto (à partir de novembro) clube"
+      "Tratamento drenagem prévio ao parto (à partir de novembro) clube",
+      "Bruna",
+      "Descontado em conta"
     ],
     [
       52,
@@ -572,7 +674,9 @@
       2025,
       "2025-11",
       "2025-11",
-      "Remédios"
+      "Remédios",
+      "Bruna",
+      "Descontado em conta"
     ],
     [
       53,
@@ -583,7 +687,9 @@
       2025,
       "2025-11",
       "2025-11",
-      "Cota do mês"
+      "Cota do mês",
+      "Viacredi",
+      "Descontado em conta"
     ],
     [
       54,
@@ -594,7 +700,9 @@
       2025,
       "2025-11",
       "2025-11",
-      "Compras farmácia (lenço recem nascido + protetor solar especial mamâe)"
+      "Compras farmácia (lenço recem nascido + protetor solar especial mamâe)",
+      "Bruna",
+      "Descontado em conta"
     ],
     [
       55,
@@ -605,7 +713,9 @@
       2025,
       "2025-11",
       "2025-11",
-      "Uber ida e volta (mãe ficou comigo final de semana dia 08/11)"
+      "Uber ida e volta (mãe ficou comigo final de semana dia 08/11)",
+      "Bruna",
+      "Descontado em conta"
     ],
     [
       56,
@@ -616,7 +726,9 @@
       2025,
       "2025-11",
       "2025-11",
-      "Remédio mês - Regenesis"
+      "Remédio mês - Regenesis",
+      "Bruna",
+      "Descontado em conta"
     ],
     [
       57,
@@ -627,7 +739,9 @@
       2025,
       "2025-11",
       "2025-11",
-      "Uber ida e volta visita hospital (Bruna)"
+      "Uber ida e volta visita hospital (Bruna)",
+      "Bruna",
+      "Descontado em conta"
     ],
     [
       58,
@@ -638,7 +752,9 @@
       2025,
       "2025-11",
       "2025-11",
-      "Uber ida e volta visita hospital (Lilian)"
+      "Uber ida e volta visita hospital (Lilian)",
+      "Bruna",
+      "Descontado em conta"
     ],
     [
       59,
@@ -649,7 +765,9 @@
       2025,
       "2025-11",
       "2025-11",
-      "Vacina Bronquiolite (bruna) - Raia"
+      "Vacina Bronquiolite (bruna) - Raia",
+      "Bruna",
+      "Descontado em conta"
     ],
     [
       60,
@@ -660,7 +778,9 @@
       2025,
       "2025-11",
       "2025-11",
-      "Itens farmácia (pós vacina) - Raia"
+      "Itens farmácia (pós vacina) - Raia",
+      "Bruna",
+      "Descontado em conta"
     ],
     [
       61,
@@ -671,7 +791,9 @@
       2025,
       "2025-11",
       "2025-11",
-      "Itens farmácia (catarinense, panvel e farmacia Bela vista)  (renite gestacional) + Creme Anti estrias Farmácia"
+      "Itens farmácia (catarinense, panvel e farmacia Bela vista)  (renite gestacional) + Creme Anti estrias Farmácia",
+      "Bruna",
+      "Descontado em conta"
     ],
     [
       62,
@@ -682,7 +804,9 @@
       2025,
       "2025-12",
       "2025-12",
-      "Coparticipação unimed 12/25"
+      "Coparticipação unimed 12/25",
+      "Bruna",
+      "Descontado em conta"
     ],
     [
       63,
@@ -693,7 +817,9 @@
       2025,
       "2025-12",
       "2025-12",
-      "Aparelho pressão braço"
+      "Aparelho pressão braço",
+      "Bruna",
+      "Descontado em conta"
     ],
     [
       64,
@@ -704,7 +830,9 @@
       2025,
       "2025-12",
       "2025-12",
-      "Remédio mamãe (infecção)"
+      "Remédio mamãe (infecção)",
+      "Bruna",
+      "Descontado em conta"
     ],
     [
       65,
@@ -715,7 +843,9 @@
       2025,
       "2025-12",
       "2025-12",
-      "Injeção mamãe (pulmão)"
+      "Injeção mamãe (pulmão)",
+      "Bruna",
+      "Descontado em conta"
     ],
     [
       66,
@@ -726,7 +856,9 @@
       2025,
       "2025-12",
       "2025-12",
-      "Uber ida e volta médico/anestesista e buscar Daiane (05/12)"
+      "Uber ida e volta médico/anestesista e buscar Daiane (05/12)",
+      "Bruna",
+      "Descontado em conta"
     ],
     [
       67,
@@ -737,7 +869,9 @@
       2025,
       "2025-12",
       "2025-12",
-      "Gravação pulseira Vini/Ouro"
+      "Gravação pulseira Vini/Ouro",
+      "Bruna",
+      "Descontado em conta"
     ],
     [
       68,
@@ -748,7 +882,9 @@
       2025,
       "2025-12",
       "2025-12",
-      "Itens farmácia - Raia"
+      "Itens farmácia - Raia",
+      "Bruna",
+      "Descontado em conta"
     ],
     [
       69,
@@ -759,7 +895,9 @@
       2025,
       "2025-12",
       "2025-12",
-      "Exame 3D e parto cesária 12/25"
+      "Exame 3D e parto cesária 12/25",
+      "Bruna",
+      "Descontado em conta"
     ],
     [
       70,
@@ -770,7 +908,9 @@
       2025,
       "2025-12",
       "2025-12",
-      "Uber ida e volta Lilian - Hospital e casa resguardo (acompanhamento Bruna)"
+      "Uber ida e volta Lilian - Hospital e casa resguardo (acompanhamento Bruna)",
+      "Lilian e Daiane",
+      "Descontado em conta"
     ],
     [
       71,
@@ -781,7 +921,9 @@
       2025,
       "2025-12",
       "2025-12",
-      "Estacionamentos"
+      "Estacionamentos",
+      "Giovani",
+      ""
     ],
     [
       72,
@@ -792,7 +934,9 @@
       2025,
       "2025-12",
       "2025-12",
-      "Fraldas e lixa neném - catarinense"
+      "Fraldas e lixa neném - catarinense",
+      "Giovani",
+      ""
     ],
     [
       73,
@@ -803,7 +947,9 @@
       2025,
       "2025-12",
       "2025-12",
-      "Remédios neném - raia"
+      "Remédios neném - raia",
+      "Giovani",
+      ""
     ],
     [
       74,
@@ -814,7 +960,9 @@
       2025,
       "2025-12",
       "2025-12",
-      "Remédios mamãe- raia"
+      "Remédios mamãe- raia",
+      "Giovani",
+      ""
     ],
     [
       75,
@@ -825,7 +973,9 @@
       2025,
       "2025-12",
       "2025-12",
-      "Pomada neném - raia"
+      "Pomada neném - raia",
+      "Giovani",
+      ""
     ],
     [
       76,
@@ -836,7 +986,9 @@
       2025,
       "2025-12",
       "2025-12",
-      "Farmacia Bela Vista"
+      "Farmacia Bela Vista",
+      "Giovani",
+      ""
     ],
     [
       77,
@@ -847,7 +999,9 @@
       2025,
       "2025-12",
       "2025-12",
-      "Fralda neném e mamãe"
+      "Fralda neném e mamãe",
+      "Bruna",
+      ""
     ],
     [
       78,
@@ -858,7 +1012,9 @@
       2025,
       "2025-12",
       "2025-12",
-      "Sutia mamãe e calcinhas (Jessica)"
+      "Sutia mamãe e calcinhas (Jessica)",
+      "Bruna",
+      ""
     ],
     [
       79,
@@ -869,7 +1025,9 @@
       2025,
       "2025-12",
       "2025-12",
-      "Drenagem pós parto - Jessica"
+      "Drenagem pós parto - Jessica",
+      "Bruna",
+      ""
     ],
     [
       80,
@@ -880,7 +1038,9 @@
       2025,
       "2025-12",
       "2025-12",
-      "Remédios mamãe antibiótico"
+      "Remédios mamãe antibiótico",
+      "Bruna",
+      ""
     ],
     [
       81,
@@ -891,7 +1051,9 @@
       2025,
       "2025-12",
       "2025-12",
-      "Itens Amazon Vini (vidro amamentação + produtos estoque + brinqueado)"
+      "Itens Amazon Vini (vidro amamentação + produtos estoque + brinqueado)",
+      "Bruna",
+      ""
     ],
     [
       82,
@@ -902,7 +1064,9 @@
       2026,
       "2026-01",
       "2026-01",
-      "Coparticipação unimed 01/26"
+      "Coparticipação unimed 01/26",
+      "Bruna",
+      ""
     ],
     [
       83,
@@ -913,7 +1077,9 @@
       2026,
       "2026-01",
       "2026-01",
-      "Remédio mamae (mastite)"
+      "Remédio mamae (mastite)",
+      "Giovani",
+      ""
     ],
     [
       84,
@@ -924,7 +1090,9 @@
       2026,
       "2026-01",
       "2026-01",
-      "Compra extrator de leite da Nathi (pix)"
+      "Compra extrator de leite da Nathi (pix)",
+      "Bruna",
+      ""
     ],
     [
       85,
@@ -935,7 +1103,9 @@
       2026,
       "2026-01",
       "2026-01",
-      "Fraldas Vini (Amazon)"
+      "Fraldas Vini (Amazon)",
+      "Bruna",
+      ""
     ],
     [
       86,
@@ -946,7 +1116,9 @@
       2026,
       "2026-01",
       "2026-01",
-      "Algodão quadrado Vini (amazon)"
+      "Algodão quadrado Vini (amazon)",
+      "Bruna",
+      ""
     ],
     [
       87,
@@ -957,7 +1129,9 @@
       2026,
       "2026-01",
       "2026-01",
-      "Repelente Vini (Amazon)"
+      "Repelente Vini (Amazon)",
+      "Bruna",
+      ""
     ],
     [
       88,
@@ -968,7 +1142,9 @@
       2026,
       "2026-01",
       "2026-01",
-      "Organizador quarto Vini (remedios) (Amazon)"
+      "Organizador quarto Vini (remedios) (Amazon)",
+      "Bruna",
+      ""
     ],
     [
       89,
@@ -979,7 +1155,9 @@
       2026,
       "2026-01",
       "2026-01",
-      "Luminárias quarto vini/cozinha (amazon)"
+      "Luminárias quarto vini/cozinha (amazon)",
+      "Bruna",
+      ""
     ],
     [
       90,
@@ -990,7 +1168,9 @@
       2026,
       "2026-01",
       "2026-01",
-      "Remédios Vini (probiótico e soro) ifood (pix)"
+      "Remédios Vini (probiótico e soro) ifood (pix)",
+      "Bruna",
+      ""
     ],
     [
       91,
@@ -1001,7 +1181,9 @@
       2026,
       "2026-02",
       "2026-02",
-      "Coparticipação unimed 02/26"
+      "Coparticipação unimed 02/26",
+      "Bruna",
+      ""
     ],
     [
       92,
@@ -1012,7 +1194,9 @@
       2026,
       "2026-01",
       "2026-01",
-      "Absorvente seios/ concha Bruna e pomada Vini (ifood)"
+      "Absorvente seios/ concha Bruna e pomada Vini (ifood)",
+      "Bruna",
+      ""
     ],
     [
       93,
@@ -1023,7 +1207,9 @@
       2026,
       "2026-01",
       "2026-01",
-      "Uber janeiro Daiane e Lilian (ida e volta)"
+      "Uber janeiro Daiane e Lilian (ida e volta)",
+      "Bruna",
+      ""
     ],
     [
       94,
@@ -1034,7 +1220,9 @@
       2026,
       "2026-01",
       "2026-01",
-      "Reserva aniversário Vini"
+      "Reserva aniversário Vini",
+      "Bruna",
+      ""
     ],
     [
       95,
@@ -1045,7 +1233,9 @@
       2026,
       "2026-01",
       "2026-01",
-      "Reserva aniversário Batizado (clube) Pix"
+      "Reserva aniversário Batizado (clube) Pix",
+      "Bruna",
+      "batizado e aniver 26/07"
     ],
     [
       96,
@@ -1056,7 +1246,9 @@
       2026,
       "2026-01",
       "2026-01",
-      "Organiadores sala (mama e brinquedo Vini) Amazon"
+      "Organiadores sala (mama e brinquedo Vini) Amazon",
+      "Bruna",
+      ""
     ],
     [
       97,
@@ -1067,7 +1259,9 @@
       2026,
       "2026-01",
       "2026-01",
-      "Brinquedo Vini (leão) e almofada carriho Amazon"
+      "Brinquedo Vini (leão) e almofada carriho Amazon",
+      "Bruna",
+      ""
     ],
     [
       98,
@@ -1078,7 +1272,9 @@
       2026,
       "2026-01",
       "2026-01",
-      "Tapete Vini Amazon"
+      "Tapete Vini Amazon",
+      "Bruna",
+      ""
     ],
     [
       99,
@@ -1089,7 +1285,9 @@
       2026,
       "2026-01",
       "2026-01",
-      "Fralda noturna P Vini Amazon"
+      "Fralda noturna P Vini Amazon",
+      "Bruna",
+      ""
     ],
     [
       100,
@@ -1100,7 +1298,9 @@
       2026,
       "2026-01",
       "2026-01",
-      "Brinqueado Vini Carangeijo Amazon"
+      "Brinqueado Vini Carangeijo Amazon",
+      "Bruna",
+      ""
     ],
     [
       101,
@@ -1111,7 +1311,9 @@
       2026,
       "2026-01",
       "2026-01",
-      "Simoneticona Vini - Farmacia"
+      "Simoneticona Vini - Farmacia",
+      "Bruna",
+      ""
     ],
     [
       102,
@@ -1122,7 +1324,9 @@
       2026,
       "2026-08",
       "2026-01",
-      "Remedio Colic Calm"
+      "Remedio Colic Calm",
+      "Giovani",
+      ""
     ],
     [
       103,
@@ -1133,7 +1337,9 @@
       2026,
       "2026-02",
       "2026-02",
-      "Lenço Vini (estoque) e Mamadeira maior Amazon"
+      "Lenço Vini (estoque) e Mamadeira maior Amazon",
+      "Bruna",
+      ""
     ],
     [
       104,
@@ -1144,7 +1350,9 @@
       2026,
       "2026-02",
       "2026-02",
-      "Termometro, rede banheira e alivio vacina Vini Amazon"
+      "Termometro, rede banheira e alivio vacina Vini Amazon",
+      "Bruna",
+      ""
     ],
     [
       105,
@@ -1155,7 +1363,9 @@
       2026,
       "2026-02",
       "2026-02",
-      "Carinho Vini Amazon"
+      "Carinho Vini Amazon",
+      "Bruna",
+      ""
     ],
     [
       106,
@@ -1166,7 +1376,9 @@
       2026,
       "2026-02",
       "2026-02",
-      "Protetor novo carinho Vini amazon"
+      "Protetor novo carinho Vini amazon",
+      "Bruna",
+      ""
     ],
     [
       107,
@@ -1177,7 +1389,9 @@
       2026,
       "2026-02",
       "2026-02",
-      "Vacina mês 02"
+      "Vacina mês 02",
+      "Giovani",
+      ""
     ],
     [
       108,
@@ -1188,7 +1402,9 @@
       2026,
       "2026-02",
       "2026-02",
-      "Pijamas Vini Shein"
+      "Pijamas Vini Shein",
+      "Bruna",
+      ""
     ],
     [
       109,
@@ -1199,7 +1415,9 @@
       2026,
       "2026-02",
       "2026-02",
-      "Nene dente - Farmacia"
+      "Nene dente - Farmacia",
+      "Bruna",
+      ""
     ],
     [
       110,
@@ -1210,7 +1428,9 @@
       2026,
       "2026-02",
       "2026-02",
-      "Fralda estoque - TOP"
+      "Fralda estoque - TOP",
+      "Bruna",
+      ""
     ],
     [
       111,
@@ -1221,7 +1441,9 @@
       2026,
       "2026-02",
       "2026-02",
-      "Coparticipação Unimed 02/26"
+      "Coparticipação Unimed 02/26",
+      "Bruna",
+      ""
     ],
     [
       112,
@@ -1232,7 +1454,9 @@
       2026,
       "2026-02",
       "2026-02",
-      "Fralda/repelente e espelho carro Vini"
+      "Fralda/repelente e espelho carro Vini",
+      "Bruna",
+      ""
     ],
     [
       113,
@@ -1243,7 +1467,9 @@
       2026,
       "2026-02",
       "2026-02",
-      "Estoque pomada Vini"
+      "Estoque pomada Vini",
+      "Bruna",
+      ""
     ],
     [
       114,
@@ -1254,7 +1480,9 @@
       2026,
       "2026-02",
       "2026-02",
-      "Bolsa quente colica Vini"
+      "Bolsa quente colica Vini",
+      "Bruna",
+      ""
     ],
     [
       115,
@@ -1265,7 +1493,9 @@
       2026,
       "2026-03",
       "2026-02",
-      "Fralda e algodão"
+      "Fralda e algodão",
+      "Bruna",
+      ""
     ],
     [
       116,
@@ -1276,7 +1506,9 @@
       2026,
       "2026-02",
       "2026-02",
-      "Carters roupa Vini"
+      "Carters roupa Vini",
+      "Bruna",
+      ""
     ],
     [
       117,
@@ -1287,7 +1519,9 @@
       2026,
       "2026-02",
       "2026-02",
-      "Meias Lupo"
+      "Meias Lupo",
+      "Bruna",
+      ""
     ],
     [
       118,
@@ -1298,7 +1532,9 @@
       2026,
       "2026-02",
       "2026-02",
-      "Fraldas Americanas"
+      "Fraldas Americanas",
+      "Bruna",
+      ""
     ],
     [
       119,
@@ -1309,7 +1545,9 @@
       2026,
       "2026-02",
       "2026-02",
-      "Canguru"
+      "Canguru",
+      "Giovani",
+      ""
     ],
     [
       120,
@@ -1320,7 +1558,9 @@
       2026,
       "2026-02",
       "2026-02",
-      "Tranferência abertura conta Vini  mês 02"
+      "Tranferência abertura conta Vini  mês 02",
+      "Bruna",
+      ""
     ],
     [
       121,
@@ -1331,7 +1571,9 @@
       2026,
       "2026-03",
       "2026-03",
-      "Vacinas mês 03"
+      "Vacinas mês 03",
+      "Bruna",
+      ""
     ],
     [
       122,
@@ -1342,7 +1584,9 @@
       2026,
       "2026-03",
       "2026-03",
-      "Probiótico"
+      "Probiótico",
+      "Bruna",
+      ""
     ],
     [
       123,
@@ -1353,7 +1597,9 @@
       2026,
       "2026-03",
       "2026-03",
-      "Remedios Vini Raia PIX"
+      "Remedios Vini Raia PIX",
+      "Bruna",
+      ""
     ],
     [
       124,
@@ -1364,7 +1610,9 @@
       2026,
       "2026-03",
       "2026-03",
-      "Coparticipação Unimed 03/26"
+      "Coparticipação Unimed 03/26",
+      "Bruna",
+      ""
     ],
     [
       125,
@@ -1375,7 +1623,9 @@
       2026,
       "2026-03",
       "2026-03",
-      "Babadores Shein Vini PIX"
+      "Babadores Shein Vini PIX",
+      "Bruna",
+      ""
     ],
     [
       126,
@@ -1386,821 +1636,971 @@
       2026,
       "2026-03",
       "2026-03",
-      "Itens compra Vini Amazon (patinhos/itens creche/etc)"
+      "Itens compra Vini Amazon (patinhos/itens creche/etc)",
+      "Bruna",
+      ""
     ],
     [
       127,
-      "",
+      "PAGO",
       352,
       "46101.0",
       "20/03/2026",
       2026,
       "2026-03",
       "2026-03",
-      "Itens Vini oboticario (sabonete/creme/shampoo)"
+      "Itens Vini oboticario (sabonete/creme/shampoo)",
+      "Bruna",
+      ""
     ],
     [
       128,
-      "",
+      "PAGO",
       382.17,
       "25 e 26/03",
       "25 e 26/03 (2026)",
       2026,
       "2026-03",
       "2026-03",
-      "Amazon (itens creche vini e itens introdução alimentar Vini)"
+      "Amazon (itens creche vini e itens introdução alimentar Vini)",
+      "Bruna",
+      ""
     ],
     [
       129,
-      "",
+      "PAGO",
       818.16,
       "23/01 até mês 25/05",
       "23/01 até mês 25/05 (2026)",
       2026,
       "2026-01",
       "2026-03",
-      "Uber Lilian/ Daiane e Olivete (ajuda com Vini)"
+      "Uber Lilian/ Daiane e Olivete (ajuda com Vini)",
+      "Bruna",
+      ""
     ],
     [
       130,
-      "",
+      "PAGO",
       160,
       "46091.0",
       "10/03/2026",
       2026,
       "2026-03",
       "2026-03",
-      "Conta Vini (cotas/poupança e previdência) mês 03"
+      "Conta Vini (cotas/poupança e previdência) mês 03",
+      "Bruna",
+      ""
     ],
     [
       131,
-      "",
+      "PAGO",
       160,
       "46122.0",
       "10/04/2026",
       2026,
       "2026-04",
       "2026-04",
-      "Conta Vini (cotas/poupança e previdência) mês 04"
+      "Conta Vini (cotas/poupança e previdência) mês 04",
+      "Bruna",
+      ""
     ],
     [
       132,
-      "",
+      "PAGO",
       0,
       "46113.0",
       "01/04/2026",
       2026,
       "2026-04",
       "2026-04",
-      "Coparticipação Unimed 04/26"
+      "Coparticipação Unimed 04/26",
+      "Bruna",
+      ""
     ],
     [
       133,
-      "",
+      "PAGO",
       570,
       "46125.0",
       "13/04/2026",
       2026,
       "2026-04",
       "2026-04",
-      "Vacina mês 04"
+      "Vacina mês 04",
+      "Bruna",
+      ""
     ],
     [
       134,
-      "",
+      "PAGO",
       390,
       "46143.0",
       "01/05/2026",
       2026,
       "2026-05",
       "2026-05",
-      "Coparticipação Unimed 05/26"
+      "Coparticipação Unimed 05/26",
+      "Bruna",
+      ""
     ],
     [
       135,
-      "",
+      "PAGO",
       105.12,
       "46118.0",
       "06/04/2026",
       2026,
       "2026-04",
       "2026-04",
-      "Remedios Vini Raia"
+      "Remedios Vini Raia",
+      "Giovani",
+      "Pago conta mês 07 para o Giovani"
     ],
     [
       136,
-      "",
+      "PAGO",
       79.9,
       "46131.0",
       "19/04/2026",
       2026,
       "2026-04",
       "2026-04",
-      "Leite Vini TOP"
+      "Leite Vini TOP",
+      "Bruna",
+      ""
     ],
     [
       137,
-      "",
+      "PAGO",
       88.87,
       "46136.0",
       "24/04/2026",
       2026,
       "2026-04",
       "2026-04",
-      "Fraldas amazon"
+      "Fraldas amazon",
+      "Bruna",
+      ""
     ],
     [
       138,
-      "",
+      "PAGO",
       270,
       "46120.0",
       "08/04/2026",
       2026,
       "2026-04",
       "2026-04",
-      "Fotos Pascoa"
+      "Fotos Pascoa",
+      "Bruna",
+      ""
     ],
     [
       139,
-      "",
+      "PAGO",
       190,
       "46108.0",
       "27/03/2026",
       2026,
       "2026-03",
       "2026-03",
-      "Paninhos boca Vini bordados (20) PIX"
+      "Paninhos boca Vini bordados (20) PIX",
+      "Bruna",
+      ""
     ],
     [
       140,
-      "",
+      "PAGO",
       226.28,
       "46127.0",
       "15/04/2026",
       2026,
       "2026-04",
       "2026-04",
-      "Itens farmácia Panvel PIX"
+      "Itens farmácia Panvel PIX",
+      "Bruna",
+      ""
     ],
     [
       141,
-      "",
+      "PAGO",
       160,
       "46152.0",
       "10/05/2026",
       2026,
       "2026-05",
       "2026-05",
-      "Conta Vini (cotas/poupança e previdência) mês 05"
+      "Conta Vini (cotas/poupança e previdência) mês 05",
+      "Bruna",
+      ""
     ],
     [
       142,
-      "",
+      "PAGO",
       179.99,
       "46147.0",
       "05/05/2026",
       2026,
       "2026-05",
       "2026-05",
-      "Compras Carters roupa inverno Vini"
+      "Compras Carters roupa inverno Vini",
+      "Bruna",
+      ""
     ],
     [
       143,
-      "",
+      "PAGO",
       58,
       "46147.0",
       "05/05/2026",
       2026,
       "2026-05",
       "2026-05",
-      "Meias Vini Lupo"
+      "Meias Vini Lupo",
+      "Bruna",
+      ""
     ],
     [
       144,
-      "",
+      "PAGO",
       85.97,
       "46147.0",
       "05/05/2026",
       2026,
       "2026-05",
       "2026-05",
-      "Roupas inverno havan Vini"
+      "Roupas inverno havan Vini",
+      "Bruna",
+      ""
     ],
     [
       145,
-      "",
+      "PAGO",
       186,
       "46154.0",
       "12/05/2026",
       2026,
       "2026-05",
       "2026-05",
-      "Roupas e babador Havan"
+      "Roupas e babador Havan",
+      "Bruna",
+      ""
     ],
     [
       146,
-      "",
+      "PAGO",
       130,
       "46150.0",
       "08/05/2026",
       2026,
       "2026-05",
       "2026-05",
-      "Roupas Oneda"
+      "Roupas Oneda",
+      "Giovani",
+      "Pago conta mês 07 para o Giovani"
     ],
     [
       147,
-      "",
+      "PAGO",
       1070,
       "46160.0",
       "18/05/2026",
       2026,
       "2026-05",
       "2026-05",
-      "Vacinas mês 05"
+      "Vacinas mês 05",
+      "Bruna",
+      ""
     ],
     [
       148,
-      "",
+      "PAGO",
       80,
       "46159.0",
       "17/05/2026",
       2026,
       "2026-05",
       "2026-05",
-      "Leite Vini panvel"
+      "Leite Vini panvel",
+      "Bruna",
+      ""
     ],
     [
       149,
-      "",
+      "PAGO",
       142.99,
       "46160.0",
       "18/05/2026",
       2026,
       "2026-05",
       "2026-05",
-      "Fralda Vini amazon XXG"
+      "Fralda Vini amazon XXG",
+      "Bruna",
+      ""
     ],
     [
       150,
-      "",
+      "PAGO",
       33.8,
       "46160.0",
       "18/05/2026",
       2026,
       "2026-05",
       "2026-05",
-      "Bye bye febre - farmacia nissei"
+      "Bye bye febre - farmacia nissei",
+      "Giovani",
+      "Pago conta mês 07 para o Giovani"
     ],
     [
       151,
-      "",
+      "PAGO",
       100,
       "46168.0",
       "26/05/2026",
       2026,
       "2026-05",
       "2026-05",
-      "Capa babador bordado (interna)"
+      "Capa babador bordado (interna)",
+      "Bruna",
+      ""
     ],
     [
       152,
-      "",
+      "PAGO",
       51,
       "46168.0",
       "26/05/2026",
       2026,
       "2026-05",
       "2026-05",
-      "Remédio vini ifood resfriado"
+      "Remédio vini ifood resfriado",
+      "Bruna",
+      ""
     ],
     [
       153,
-      "",
+      "PAGO",
       50.38,
       "46170.0",
       "28/05/2026",
       2026,
       "2026-05",
       "2026-05",
-      "Lenços Vini Amazon"
+      "Lenços Vini Amazon",
+      "Bruna",
+      ""
     ],
     [
       154,
-      "",
+      "PAGO",
       431,
       "04/06/2026 e 27/07/2026",
       "04/06/2026 e 27/07/2026 (2026)",
       2026,
       "2026-06",
       "2026-06",
-      "Decoração batizado e aniver 26/07"
+      "Decoração batizado e aniver 26/07",
+      "Bruna",
+      "batizado e aniver 26/07"
     ],
     [
       155,
-      "",
+      "PAGO",
       432.94,
       "46174.0",
       "01/06/2026",
       2026,
       "2026-06",
       "2026-06",
-      "Coparticipação Unimed 06/26"
+      "Coparticipação Unimed 06/26",
+      "Bruna",
+      ""
     ],
     [
       156,
-      "",
+      "PAGO",
       28,
       "46180.0",
       "07/06/2026",
       2026,
       "2026-06",
       "2026-06",
-      "Velas Bruna aniver batizado e aniver 26/07"
+      "Velas Bruna aniver batizado e aniver 26/07",
+      "Bruna",
+      "batizado e aniver 26/07"
     ],
     [
       157,
-      "",
+      "PAGO",
       50,
       "46178.0",
       "05/06/2026",
       2026,
       "2026-06",
       "2026-06",
-      "Valor igreja Batizado batizado e aniver 26/07"
+      "Valor igreja Batizado batizado e aniver 26/07",
+      "Bruna",
+      "batizado e aniver 26/07"
     ],
     [
       158,
-      "",
+      "PAGO",
       66.9,
       "46175.0",
       "02/06/2026",
       2026,
       "2026-06",
       "2026-06",
-      "Cupeta Nova"
+      "Cupeta Nova",
+      "Bruna",
+      ""
     ],
     [
       159,
-      "3550",
+      "PAGO",
       131,
       "46180.0",
       "07/06/2026",
       2026,
       "2026-06",
       "2026-06",
-      "Nebulizador"
+      "Nebulizador",
+      "Bruna",
+      ""
     ],
     [
       160,
-      "",
+      "PAGO",
       503.82,
       "26 de junho até 28 de agosto",
       "26 de junho até 28 de agosto (2026)",
       2026,
       "2026-06",
       "2026-06",
-      "Uber Olivete e Lilian"
+      "Uber Olivete e Lilian",
+      "Bruna",
+      ""
     ],
     [
       161,
-      "",
+      "PAGO",
       200,
       "",
       "Sem dia (2026)",
       2026,
       "2026-06",
       "2026-06",
-      "Gasolina Bruna mês de julho - ajuda"
+      "Gasolina Bruna mês de julho - ajuda",
+      "Bruna",
+      ""
     ],
     [
       162,
-      "",
+      "PAGO",
       160,
       "46183.0",
       "10/06/2026",
       2026,
       "2026-06",
       "2026-06",
-      "Conta Vini (cotas/poupança e previdência) mês 06"
+      "Conta Vini (cotas/poupança e previdência) mês 06",
+      "Bruna",
+      ""
     ],
     [
       163,
-      "",
+      "PAGO",
       80,
       "46185.0",
       "12/06/2026",
       2026,
       "2026-06",
       "2026-06",
-      "Leite Vini - TOP"
+      "Leite Vini - TOP",
+      "Bruna",
+      ""
     ],
     [
       164,
-      "",
+      "PAGO",
       570,
       "46188.0",
       "15/06/2026",
       2026,
       "2026-06",
       "2026-06",
-      "Vacina mês 06"
+      "Vacina mês 06",
+      "Bruna",
+      ""
     ],
     [
       165,
-      "",
+      "PAGO",
       40,
       "46188.0",
       "15/06/2026",
       2026,
       "2026-06",
       "2026-06",
-      "Itens farmácia Vini - Bye bye febre"
+      "Itens farmácia Vini - Bye bye febre",
+      "Giovani",
+      "Pago conta mês 07 para o Giovani"
     ],
     [
       166,
-      "",
+      "PAGO",
       50.05,
       "46195.0",
       "22/06/2026",
       2026,
       "2026-06",
       "2026-06",
-      "Remédios Vini - Raia"
+      "Remédios Vini - Raia",
+      "Bruna",
+      ""
     ],
     [
       167,
-      "",
+      "PAGO",
       31.99,
       "46195.0",
       "22/06/2026",
       2026,
       "2026-06",
       "2026-06",
-      "Remédios Vini - Catarinense"
+      "Remédios Vini - Catarinense",
+      "Giovani",
+      "Pago conta mês 07 para o Giovani"
     ],
     [
       168,
-      "",
+      "PAGO",
       148.33,
       "46195.0",
       "22/06/2026",
       2026,
       "2026-06",
       "2026-06",
-      "Oximetro Vini - Mercado Livre"
+      "Oximetro Vini - Mercado Livre",
+      "Bruna",
+      ""
     ],
     [
       169,
-      "",
+      "PAGO",
       46.9,
       "46212.0",
       "09/07/2026",
       2026,
       "2026-07",
       "2026-07",
-      "Chupeta nova batizado"
+      "Chupeta nova batizado",
+      "Bruna",
+      ""
     ],
     [
       170,
-      "",
+      "PAGO",
       85.43,
       "46211.0",
       "08/07/2026",
       2026,
       "2026-07",
       "2026-07",
-      "Lenço e brinquedo Vini Ventozas - Amazon"
+      "Lenço e brinquedo Vini Ventozas - Amazon",
+      "Bruna",
+      ""
     ],
     [
       171,
-      "",
+      "PAGO",
       114.43,
       "46204.0",
       "01/07/2026",
       2026,
       "2026-07",
       "2026-07",
-      "Coparticipação Unimed 07/26"
+      "Coparticipação Unimed 07/26",
+      "Bruna",
+      ""
     ],
     [
       172,
-      "",
+      "PAGO",
       73,
       "46204.0",
       "01/07/2026",
       2026,
       "2026-07",
       "2026-07",
-      "Leite Vini - Archer"
+      "Leite Vini - Archer",
+      "Bruna",
+      ""
     ],
     [
       173,
-      "",
+      "PAGO",
       160,
       "46213.0",
       "10/07/2026",
       2026,
       "2026-07",
       "2026-07",
-      "Conta Vini (cotas/poupança e previdência) mês 07"
+      "Conta Vini (cotas/poupança e previdência) mês 07",
+      "Bruna",
+      ""
     ],
     [
       174,
-      "",
+      "PAGO",
       93.59,
       "46204.0",
       "01/07/2026",
       2026,
       "2026-07",
       "2026-07",
-      "Fralda/pomada - Farmacia Santa Isabel Gaspar"
+      "Fralda/pomada - Farmacia Santa Isabel Gaspar",
+      "Bruna",
+      ""
     ],
     [
       175,
-      "",
+      "PAGO",
       150,
       "46224.0",
       "21/07/2026",
       2026,
       "2026-07",
       "2026-07",
-      "Saldagos batizado e aniver 26/07"
+      "Saldagos batizado e aniver 26/07",
+      "Bruna",
+      "batizado e aniver 26/07"
     ],
     [
       176,
-      "",
+      "PAGO",
       84.9,
       "46214.0",
       "11/07/2026",
       2026,
       "2026-07",
       "2026-07",
-      "Farmacia Catarinense - Fraldas"
+      "Farmacia Catarinense - Fraldas",
+      "Bruna",
+      ""
     ],
     [
       177,
-      "",
+      "PAGO",
       752.51,
       "46227.0",
       "24/07/2026",
       2026,
       "2026-07",
       "2026-07",
-      "Compras bebidas Batizado Vini - Komprão"
+      "Compras bebidas Batizado Vini - Komprão",
+      "Bruna",
+      "batizado e aniver 26/07"
     ],
     [
       178,
-      "",
+      "PAGO",
       350,
       "46230.0",
       "27/07/2026",
       2026,
       "2026-07",
       "2026-07",
-      "Fotografa"
+      "Fotografa",
+      "Bruna",
+      "batizado e aniver 26/07"
     ],
     [
       179,
-      "",
+      "PAGO",
       70,
       "46223.0",
       "20/07/2026",
       2026,
       "2026-07",
       "2026-07",
-      "Sapatinho Vini"
+      "Sapatinho Vini",
+      "Bruna",
+      "batizado e aniver 26/07"
     ],
     [
       180,
-      "",
+      "PAGO",
       408.23,
       "46228.0",
       "25/07/2026",
       2026,
       "2026-07",
       "2026-07",
-      "Demais itens e comida - Unibox/Mercado Missões/Archer"
+      "Demais itens e comida - Unibox/Mercado Missões/Archer",
+      "Bruna",
+      "batizado e aniver 26/07"
     ],
     [
       181,
-      "",
+      "PAGO",
       216.96,
       "46227.0",
       "24/07/2026",
       2026,
       "2026-07",
       "2026-07",
-      "Itens Farmacia Panvel (fralda)"
+      "Itens Farmacia Panvel (fralda)",
+      "Bruna",
+      ""
     ],
     [
       182,
-      "",
+      "PAGO",
       615,
       "46228.0",
       "25/07/2026",
       2026,
       "2026-07",
       "2026-07",
-      "Comida"
+      "Comida",
+      "Giovani",
+      "Pago conta mês 08 para o Giovani l batizado e aniver 26/07"
     ],
     [
       183,
-      "",
+      "PAGO",
       114.43,
       "46235.0",
       "01/08/2026",
       2026,
       "2026-08",
       "2026-08",
-      "Coparticipação Unimed 08/26"
+      "Coparticipação Unimed 08/26",
+      "Bruna",
+      ""
     ],
     [
       184,
-      "",
+      "PAGO",
       160,
       "46235.0",
       "01/08/2026",
       2026,
       "2026-08",
       "2026-08",
-      "Conta Vini (cotas/poupança e previdência) mês 08"
+      "Conta Vini (cotas/poupança e previdência) mês 08",
+      "Bruna",
+      ""
     ],
     [
       185,
-      "",
+      "PAGO",
       279.6,
       "46233.0",
       "30/07/2026",
       2026,
       "2026-07",
       "2026-08",
-      "Fralda XXG e XG Pampers - Unibox blumenau (estoque)"
+      "Fralda XXG e XG Pampers - Unibox blumenau (estoque)",
+      "Bruna",
+      ""
     ],
     [
       186,
-      "",
+      "PAGO",
       53.89,
       "46235.0",
       "01/08/2026",
       2026,
       "2026-08",
       "2026-08",
-      "Bolsa termica cinza Vini"
+      "Bolsa termica cinza Vini",
+      "Bruna",
+      ""
     ],
     [
       187,
-      "",
+      "PAGO",
       28.99,
       "46236.0",
       "02/08/2026",
       2026,
       "2026-08",
       "2026-08",
-      "Bolinhas Vini - amazon"
+      "Bolinhas Vini - amazon",
+      "Bruna",
+      ""
     ],
     [
       188,
-      "",
+      "PAGO",
       84.92,
       "46236.0",
       "02/08/2026",
       2026,
       "2026-08",
       "2026-08",
-      "Pote vidro marmitas Vini - amazon"
+      "Pote vidro marmitas Vini - amazon",
+      "Bruna",
+      ""
     ],
     [
       189,
-      "",
+      "PAGO",
       105.5,
       "46239.0",
       "05/08/2026",
       2026,
       "2026-08",
       "2026-08",
-      "Vacina Gripe - Hospital do pulmão"
+      "Vacina Gripe - Hospital do pulmão",
+      "Bruna",
+      ""
     ],
     [
       190,
-      "",
+      "PAGO",
       40,
       "46239.0",
       "05/08/2026",
       2026,
       "2026-08",
       "2026-08",
-      "Diferença valor presente vini e troca"
+      "Diferença valor presente vini e troca",
+      "Bruna",
+      ""
     ],
     [
       191,
-      "",
+      "PAGO",
       69.9,
       "46239.0",
       "05/08/2026",
       2026,
       "2026-08",
       "2026-08",
-      "Ferro - farmacia catarinense"
+      "Ferro - farmacia catarinense",
+      "Bruna",
+      ""
     ],
     [
       192,
-      "",
+      "PAGO",
       47.7,
       "46239.0",
       "05/08/2026",
       2026,
       "2026-08",
       "2026-08",
-      "Tenis Branco Vini"
+      "Tenis Branco Vini",
+      "Bruna",
+      ""
     ],
     [
       193,
-      "",
+      "PAGO",
       82.8,
       "46239.0",
       "05/08/2026",
       2026,
       "2026-08",
       "2026-08",
-      "Suporte costas Vini e boné - shein"
+      "Suporte costas Vini e boné - shein",
+      "Bruna",
+      ""
     ],
     [
       194,
-      "",
+      "PAGO",
       59.99,
       "46240.0",
       "06/08/2026",
       2026,
       "2026-08",
       "2026-08",
-      "Pomada assadura"
+      "Pomada assadura",
+      "Bruna",
+      ""
     ],
     [
       195,
-      "",
+      "PAGO",
       160,
       "46247.0",
       "13/08/2026",
       2026,
       "2026-08",
       "2026-08",
-      "Leite e estoque de leite - TOP e Amazon"
+      "Leite e estoque de leite - TOP e Amazon",
+      "Bruna",
+      ""
     ],
     [
       196,
-      "",
+      "PAGO",
       140.91,
       "46248.0",
       "14/08/2026",
       2026,
       "2026-08",
       "2026-08",
-      "Escova de Dente - Amazon + perfume Vini"
+      "Escova de Dente - Amazon + perfume Vini",
+      "Bruna",
+      ""
     ],
     [
       197,
-      "",
+      "PAGO",
       50,
       "46259.0",
       "25/08/2026",
       2026,
       "2026-08",
       "2026-08",
-      "Valor de entrada decoração - Aniversário do Vini 12/12"
+      "Valor de entrada decoração - Aniversário do Vini 12/12",
+      "Bruna",
+      "Aniversário do Vini 12/12"
     ],
     [
       198,
-      "",
+      "PAGO",
       46.99,
       "46246.0",
       "12/08/2026",
       2026,
       "2026-08",
       "2026-08",
-      "Pintinho aniversário Vini - Amazon"
+      "Pintinho aniversário Vini - Amazon",
+      "Bruna",
+      "Aniversário do Vini 12/12"
     ],
     [
       199,
-      "",
+      "PAGO",
       49.9,
       "46260.0",
       "26/08/2026",
       2026,
       "2026-08",
       "2026-08",
-      "Lenço umidecido - Amazon"
+      "Lenço umidecido - Amazon",
+      "Bruna",
+      ""
     ],
     [
       200,
-      "",
+      "PAGO",
       161.57,
       "46260.0",
       "26/08/2026",
       2026,
       "2026-08",
       "2026-08",
-      "Fralda - Amazon"
+      "Fralda - Amazon",
+      "Bruna",
+      ""
     ],
     [
       201,
@@ -2211,7 +2611,9 @@
       2026,
       "2026-09",
       "2026-09",
-      "Coparticipação Unimed 09/26"
+      "Coparticipação Unimed 09/26",
+      "Bruna",
+      ""
     ],
     [
       202,
@@ -2222,7 +2624,9 @@
       2026,
       "2026-09",
       "2026-09",
-      "Conta Vini (cotas/poupança e previdência) mês 09"
+      "Conta Vini (cotas/poupança e previdência) mês 09",
+      "Bruna",
+      ""
     ],
     [
       203,
@@ -2233,7 +2637,9 @@
       2026,
       "2026-09",
       "2026-09",
-      "Gasolina Bruna mês de Agosto - ajuda"
+      "Gasolina Bruna mês de Agosto - ajuda",
+      "Bruna",
+      ""
     ],
     [
       204,
@@ -2244,7 +2650,9 @@
       2026,
       "2026-09",
       "2026-09",
-      "Itens aniver Vini decoração - Festa e Folia"
+      "Itens aniver Vini decoração - Festa e Folia",
+      "Bruna",
+      ""
     ],
     [
       205,
@@ -2255,7 +2663,9 @@
       2026,
       "2026-09",
       "2026-09",
-      "Consulta particular Glaunir - 05/09"
+      "Consulta particular Glaunir - 05/09",
+      "Bruna",
+      ""
     ],
     [
       206,
@@ -2266,7 +2676,9 @@
       2026,
       "2026-09",
       "2026-09",
-      "Raia - remedios Vini"
+      "Raia - remedios Vini",
+      "Bruna",
+      ""
     ],
     [
       207,
@@ -2277,7 +2689,9 @@
       2026,
       "2026-08",
       "2026-08",
-      "Uber Olivete e Lilian"
+      "Uber Olivete e Lilian",
+      "Bruna",
+      ""
     ],
     [
       208,
@@ -2288,7 +2702,9 @@
       2026,
       "2026-08",
       "2026-08",
-      "Leite Vini - Amazon"
+      "Leite Vini - Amazon",
+      "Bruna",
+      ""
     ],
     [
       209,
@@ -2299,7 +2715,9 @@
       2026,
       "2026-09",
       "2026-09",
-      "Balões  - Aniversário do Vini 12/12"
+      "Balões  - Aniversário do Vini 12/12",
+      "Bruna",
+      ""
     ],
     [
       210,
@@ -2310,7 +2728,9 @@
       2026,
       "2026-09",
       "2026-09",
-      "Forminhas amazon para comidinhas do Vini"
+      "Forminhas amazon para comidinhas do Vini",
+      "Bruna",
+      ""
     ],
     [
       211,
@@ -2321,7 +2741,9 @@
       2026,
       "2026-09",
       "2026-09",
-      "Lenço Vini - Amazon"
+      "Lenço Vini - Amazon",
+      "Bruna",
+      ""
     ],
     [
       212,
@@ -2332,7 +2754,9 @@
       2026,
       "2026-09",
       "2026-09",
-      "Protetores Vini (gavetas e pontas)"
+      "Protetores Vini (gavetas e pontas)",
+      "Bruna",
+      ""
     ],
     [
       213,
@@ -2343,7 +2767,9 @@
       2026,
       "2026-09",
       "2026-09",
-      "Bicicleta Andador Equilíbrio Sem Pedal 4 Roda Zippy Toys (Bege) - Vini"
+      "Bicicleta Andador Equilíbrio Sem Pedal 4 Roda Zippy Toys (Bege) - Vini",
+      "Bruna",
+      ""
     ],
     [
       214,
@@ -2354,7 +2780,9 @@
       2026,
       "2026-09",
       "2026-09",
-      "Fralda Piscina"
+      "Fralda Piscina",
+      "Bruna",
+      ""
     ],
     [
       215,
@@ -2365,7 +2793,9 @@
       2026,
       "2026-09",
       "2026-09",
-      "Fralda + lenço Vini Amazon"
+      "Fralda + lenço Vini Amazon",
+      "Bruna",
+      ""
     ],
     [
       216,
@@ -2376,7 +2806,9 @@
       2026,
       "2026-09",
       "2026-09",
-      "Coparticipação Unimed 10/26"
+      "Coparticipação Unimed 10/26",
+      "Bruna",
+      ""
     ],
     [
       217,
@@ -2387,7 +2819,9 @@
       2026,
       "2026-09",
       "2026-09",
-      "Conta Vini (cotas/poupança e previdência) mês 10"
+      "Conta Vini (cotas/poupança e previdência) mês 10",
+      "Bruna",
+      ""
     ],
     [
       218,
@@ -2398,7 +2832,9 @@
       2026,
       "2026-09",
       "2026-09",
-      "Gasolina Bruna mês de setembro - ajuda"
+      "Gasolina Bruna mês de setembro - ajuda",
+      "Bruna",
+      ""
     ],
     [
       219,
@@ -2409,7 +2845,9 @@
       2026,
       "2026-09",
       "2026-09",
-      "Vacina Febre amarela - Genolab"
+      "Vacina Febre amarela - Genolab",
+      "Bruna",
+      ""
     ],
     [
       220,
@@ -2420,7 +2858,9 @@
       2026,
       "2026-09",
       "2026-09",
-      "Jaqueta Jeans Vini + roupa piscina Vini"
+      "Jaqueta Jeans Vini + roupa piscina Vini",
+      "Bruna",
+      ""
     ],
     [
       221,
@@ -2431,7 +2871,9 @@
       2026,
       "2026-08",
       "2026-08",
-      "Mocilhas fazendinha aniver Vini - Magalu"
+      "Mocilhas fazendinha aniver Vini - Magalu",
+      "Bruna",
+      "Aniversário do Vini 12/12"
     ],
     [
       222,
@@ -2442,7 +2884,9 @@
       2026,
       "2026-09",
       "2026-09",
-      "Roupa oktober"
+      "Roupa oktober",
+      "Bruna",
+      ""
     ],
     [
       223,
@@ -2453,7 +2897,9 @@
       2026,
       "2026-09",
       "2026-09",
-      "Lancheira termica Vini - Ketlyn PIX"
+      "Lancheira termica Vini - Ketlyn PIX",
+      "",
+      ""
     ],
     [
       224,
@@ -2464,7 +2910,9 @@
       2026,
       "2026-11",
       "2026-11",
-      "Coparticipação Unimed 11/26"
+      "Coparticipação Unimed 11/26",
+      "Bruna",
+      ""
     ],
     [
       226,
@@ -2475,7 +2923,9 @@
       2026,
       "2026-11",
       "2026-11",
-      "Conta Vini (cotas/poupança e previdência) mês 11"
+      "Conta Vini (cotas/poupança e previdência) mês 11",
+      "Bruna",
+      ""
     ],
     [
       227,
@@ -2486,7 +2936,9 @@
       2026,
       "2026-12",
       "2026-12",
-      "Coparticipação Unimed 12/26"
+      "Coparticipação Unimed 12/26",
+      "Bruna",
+      ""
     ],
     [
       229,
@@ -2497,7 +2949,9 @@
       2026,
       "2026-12",
       "2026-12",
-      "Conta Vini (cotas/poupança e previdência) mês 12"
+      "Conta Vini (cotas/poupança e previdência) mês 12",
+      "Bruna",
+      ""
     ]
   ]
 }

@@ -56,7 +56,7 @@
             2ª Aba: Poupança Baby (Ao Vivo)
           </span>
           <span class="px-2.5 py-0.5 rounded-full text-xs font-medium bg-[var(--secondary)] text-[var(--muted-foreground)] border border-[var(--border)]">
-            Colunas F · G · H · I · J
+            Colunas F · G · H · I · J · K · L
           </span>
           <span id="lastSyncBadge" class="px-2.5 py-0.5 rounded-full text-xs font-medium bg-[var(--background)] text-[var(--muted-foreground)] border border-[var(--border)]">
             Sincronizado com Google Sheets
@@ -66,7 +66,7 @@
           Gastos Vini App — Dashboard Poupança Baby
         </h1>
         <p class="text-xs md:text-sm text-[var(--muted-foreground)] mt-0.5">
-          Base de dados conectada ao Google Sheets • Gráfico mensal e itens detalhados dentro de cada mês
+          Base de dados conectada ao Google Sheets • Divisão por 2 (50% cada) • Quem Pagou (Bruna/Giovani) • Observações
         </p>
       </div>
 
@@ -108,58 +108,175 @@
 
     <!-- KPI Cards -->
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-      <!-- KPI 1: Total Gastos -->
-      <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 shadow-sm">
-        <div class="flex items-center justify-between">
-          <span class="text-xs font-medium text-[var(--muted-foreground)] uppercase tracking-wider">Total de Gastos (Col. G)</span>
-          <span class="text-xs px-2 py-0.5 rounded-md bg-emerald-500/10 text-emerald-400 font-medium" id="kpiTotalCount">226 itens</span>
+      <!-- KPI 1: Total Gastos & Divisão por 2 -->
+      <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 shadow-sm flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-medium text-[var(--muted-foreground)] uppercase tracking-wider">Total de Gastos (Col. G)</span>
+            <span class="text-xs px-2 py-0.5 rounded-md bg-emerald-500/10 text-emerald-400 font-medium" id="kpiTotalCount">226 itens</span>
+          </div>
+          <div class="text-2xl font-bold mt-2 text-[var(--foreground)]" id="kpiTotalValor">R$ 43.151,77</div>
+          <p class="text-xs text-[var(--muted-foreground)] mt-1" id="kpiTotalSub">
+            Fórmula G231: <strong class="text-[var(--foreground)]" id="kpiFormulaVal">R$ 42.781,77</strong>
+          </p>
         </div>
-        <div class="text-2xl font-bold mt-2 text-[var(--foreground)]" id="kpiTotalValor">R$ 43.151,77</div>
-        <p class="text-xs text-[var(--muted-foreground)] mt-1" id="kpiTotalSub">
-          Fórmula G231 na planilha: <strong class="text-[var(--foreground)]" id="kpiFormulaVal">R$ 42.781,77</strong>
-        </p>
+        <!-- Observação do valor dividido por 2 -->
+        <div class="mt-3 pt-2.5 border-t border-[var(--border)] flex items-center justify-between bg-indigo-500/10 -mx-4 -mb-4 px-4 py-2.5 rounded-b-xl">
+          <span class="text-xs font-semibold text-indigo-300 flex items-center gap-1.5">
+            <span class="w-2 h-2 rounded-full bg-indigo-400 animate-pulse"></span>
+            Dividido por 2 (por pessoa):
+          </span>
+          <span class="text-sm font-bold text-indigo-200" id="kpiDividido2">R$ 21.575,89</span>
+        </div>
       </div>
 
       <!-- KPI 2: Situação (Col F) -->
-      <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 shadow-sm">
-        <div class="flex items-center justify-between">
-          <span class="text-xs font-medium text-[var(--muted-foreground)] uppercase tracking-wider">Situação (Col. F)</span>
-          <span class="text-xs px-2 py-0.5 rounded-md bg-blue-500/10 text-blue-400 font-medium" id="kpiPagoPct">62,3% marcado PAGO</span>
+      <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 shadow-sm flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-medium text-[var(--muted-foreground)] uppercase tracking-wider">Situação (Col. F)</span>
+            <span class="text-xs px-2 py-0.5 rounded-md bg-blue-500/10 text-blue-400 font-medium" id="kpiPagoPct">92,4% marcado PAGO</span>
+          </div>
+          <div class="mt-2 flex items-baseline justify-between gap-2">
+            <div>
+              <div class="text-lg font-bold text-emerald-400" id="kpiPagoValor">R$ 39.888,99</div>
+              <div class="text-xs text-[var(--muted-foreground)]" id="kpiPagoCount">PAGO (199 itens)</div>
+            </div>
+            <div class="text-right">
+              <div class="text-lg font-bold text-sky-400" id="kpiAbertoValor">R$ 3.262,78</div>
+              <div class="text-xs text-[var(--muted-foreground)]" id="kpiAbertoCount">Sem status (27 itens)</div>
+            </div>
+          </div>
         </div>
-        <div class="mt-2 flex items-baseline justify-between gap-2">
-          <div>
-            <div class="text-lg font-bold text-emerald-400" id="kpiPagoValor">R$ 26.867,75</div>
-            <div class="text-xs text-[var(--muted-foreground)]" id="kpiPagoCount">PAGO (125 itens)</div>
-          </div>
-          <div class="text-right">
-            <div class="text-lg font-bold text-sky-400" id="kpiAbertoValor">R$ 16.284,02</div>
-            <div class="text-xs text-[var(--muted-foreground)]" id="kpiAbertoCount">Sem status (101 itens)</div>
-          </div>
+        <div class="mt-3 pt-2.5 border-t border-[var(--border)] flex items-center justify-between text-xs text-[var(--muted-foreground)]">
+          <span>Pago dividido por 2:</span>
+          <span class="font-semibold text-emerald-400" id="kpiPagoDividido2">R$ 19.944,50</span>
         </div>
       </div>
 
-      <!-- KPI 3: Média Mensal -->
-      <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 shadow-sm">
-        <div class="flex items-center justify-between">
-          <span class="text-xs font-medium text-[var(--muted-foreground)] uppercase tracking-wider">Média por Mês</span>
-          <span class="text-xs px-2 py-0.5 rounded-md bg-[var(--secondary)] text-[var(--muted-foreground)] font-medium" id="kpiMesesCount">21 meses</span>
+      <!-- KPI 3: Média Mensal & Divisão por 2 -->
+      <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 shadow-sm flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-medium text-[var(--muted-foreground)] uppercase tracking-wider">Média por Mês</span>
+            <span class="text-xs px-2 py-0.5 rounded-md bg-[var(--secondary)] text-[var(--muted-foreground)] font-medium" id="kpiMesesCount">20 meses</span>
+          </div>
+          <div class="text-2xl font-bold mt-2 text-[var(--foreground)]" id="kpiMediaMensal">R$ 2.157,59</div>
+          <p class="text-xs text-[var(--muted-foreground)] mt-1" id="kpiTicketMedio">
+            Ticket médio por gasto: <strong class="text-[var(--foreground)]">R$ 190,94</strong>
+          </p>
         </div>
-        <div class="text-2xl font-bold mt-2 text-[var(--foreground)]" id="kpiMediaMensal">R$ 2.054,85</div>
-        <p class="text-xs text-[var(--muted-foreground)] mt-1" id="kpiTicketMedio">
-          Ticket médio por gasto: <strong class="text-[var(--foreground)]">R$ 190,94</strong>
-        </p>
+        <div class="mt-3 pt-2.5 border-t border-[var(--border)] flex items-center justify-between text-xs text-[var(--muted-foreground)]">
+          <span>Dividido por 2 / mês:</span>
+          <strong class="text-indigo-400 font-bold" id="kpiMediaDividido2">R$ 1.078,80</strong>
+        </div>
       </div>
 
       <!-- KPI 4: Maior Gasto Mensal -->
-      <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 shadow-sm">
-        <div class="flex items-center justify-between">
-          <span class="text-xs font-medium text-[var(--muted-foreground)] uppercase tracking-wider">Pico de Gastos</span>
-          <span class="text-xs px-2 py-0.5 rounded-md bg-rose-500/10 text-rose-400 font-medium" id="kpiPicoMes">Dezembro/2025</span>
+      <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 shadow-sm flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-medium text-[var(--muted-foreground)] uppercase tracking-wider">Pico de Gastos</span>
+            <span class="text-xs px-2 py-0.5 rounded-md bg-rose-500/10 text-rose-400 font-medium" id="kpiPicoMes">Dezembro/2025</span>
+          </div>
+          <div class="text-2xl font-bold mt-2 text-[var(--foreground)]" id="kpiPicoValor">R$ 7.137,07</div>
+          <p class="text-xs text-[var(--muted-foreground)] mt-1 truncate" id="kpiPicoSub">
+            Destaque: Exame 3D e parto cesárea (R$ 3.250,00)
+          </p>
         </div>
-        <div class="text-2xl font-bold mt-2 text-[var(--foreground)]" id="kpiPicoValor">R$ 6.877,07</div>
-        <p class="text-xs text-[var(--muted-foreground)] mt-1" id="kpiPicoSub">
-          Destaque: Exame 3D e parto cesárea (R$ 3.250,00)
-        </p>
+        <div class="mt-3 pt-2.5 border-t border-[var(--border)] flex items-center justify-between text-xs text-[var(--muted-foreground)]">
+          <span>Pico dividido por 2:</span>
+          <strong class="text-rose-400 font-bold" id="kpiPicoDividido2">R$ 3.568,54</strong>
+        </div>
+      </div>
+    </div>
+
+    <!-- Divisão 50/50 & Quem Pagou (Coluna K & L) -->
+    <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-5 shadow-sm space-y-3">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-[var(--border)]">
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-xl bg-indigo-500/15 text-indigo-400 flex items-center justify-center font-bold text-base">
+            👥
+          </div>
+          <div>
+            <div class="flex items-center gap-2">
+              <h3 class="text-sm font-bold text-[var(--foreground)]">Divisão 50/50 & Quem Pagou (Coluna K)</h3>
+              <span class="text-[11px] px-2 py-0.5 rounded-md bg-indigo-500/10 text-indigo-300 border border-indigo-500/20 font-medium">Cota 50% cada</span>
+            </div>
+            <p class="text-xs text-[var(--muted-foreground)]">Controle de quem pagou cada despesa e balanço de acerto entre Bruna e Giovani</p>
+          </div>
+        </div>
+
+        <!-- Acerto de Contas Badge -->
+        <div id="kpiAcertoContas" class="px-3.5 py-2 rounded-xl bg-[var(--background)] border border-[var(--border)] text-xs flex items-center gap-2">
+          <!-- Calculado dinamicamente -->
+        </div>
+      </div>
+
+      <!-- Grid dos Pagadores -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3">
+        <!-- Card Bruna -->
+        <div onclick="setQuemPagouFilter('Bruna')" class="cursor-pointer bg-[var(--background)] border border-[var(--border)] hover:border-pink-500/60 rounded-xl p-3.5 transition group">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-bold text-pink-400 flex items-center gap-1.5">
+              <span class="w-2 h-2 rounded-full bg-pink-400"></span> Bruna
+            </span>
+            <span class="text-xs font-semibold px-2 py-0.5 rounded-md bg-pink-500/10 text-pink-300" id="kpiBrunaCount">201 itens</span>
+          </div>
+          <div class="text-lg font-bold text-[var(--foreground)] mt-1.5 group-hover:text-pink-300 transition" id="kpiBrunaTotal">R$ 39.282,43</div>
+          <div class="text-xs text-[var(--muted-foreground)] mt-0.5" id="kpiBrunaPct">91,0% do total pago</div>
+          <div class="w-full bg-[var(--card)] h-1.5 rounded-full mt-2 overflow-hidden">
+            <div id="barBrunaPct" class="h-full bg-pink-500 rounded-full" style="width: 91%"></div>
+          </div>
+        </div>
+
+        <!-- Card Giovani -->
+        <div onclick="setQuemPagouFilter('Giovani')" class="cursor-pointer bg-[var(--background)] border border-[var(--border)] hover:border-sky-500/60 rounded-xl p-3.5 transition group">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-bold text-sky-400 flex items-center gap-1.5">
+              <span class="w-2 h-2 rounded-full bg-sky-400"></span> Giovani
+            </span>
+            <span class="text-xs font-semibold px-2 py-0.5 rounded-md bg-sky-500/10 text-sky-300" id="kpiGiovaniCount">19 itens</span>
+          </div>
+          <div class="text-lg font-bold text-[var(--foreground)] mt-1.5 group-hover:text-sky-300 transition" id="kpiGiovaniTotal">R$ 3.494,46</div>
+          <div class="text-xs text-[var(--muted-foreground)] mt-0.5" id="kpiGiovaniPct">8,1% do total pago</div>
+          <div class="w-full bg-[var(--card)] h-1.5 rounded-full mt-2 overflow-hidden">
+            <div id="barGiovaniPct" class="h-full bg-sky-500 rounded-full" style="width: 8%"></div>
+          </div>
+        </div>
+
+        <!-- Card Outros / Viacredi -->
+        <div onclick="setQuemPagouFilter('Outros')" class="cursor-pointer bg-[var(--background)] border border-[var(--border)] hover:border-indigo-500/60 rounded-xl p-3.5 transition group">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-bold text-indigo-400 flex items-center gap-1.5">
+              <span class="w-2 h-2 rounded-full bg-indigo-400"></span> Viacredi / Outros
+            </span>
+            <span class="text-xs font-semibold px-2 py-0.5 rounded-md bg-indigo-500/10 text-indigo-300" id="kpiOutrosCount">6 itens</span>
+          </div>
+          <div class="text-lg font-bold text-[var(--foreground)] mt-1.5 group-hover:text-indigo-300 transition" id="kpiOutrosTotal">R$ 374,88</div>
+          <div class="text-xs text-[var(--muted-foreground)] mt-0.5" id="kpiOutrosPct">0,9% do total pago</div>
+          <div class="w-full bg-[var(--card)] h-1.5 rounded-full mt-2 overflow-hidden">
+            <div id="barOutrosPct" class="h-full bg-indigo-500 rounded-full" style="width: 1%"></div>
+          </div>
+        </div>
+
+        <!-- Card Cota 50% -->
+        <div class="bg-indigo-500/10 border border-indigo-500/20 rounded-xl p-3.5 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-bold text-indigo-300 flex items-center gap-1.5">
+                <span class="w-2 h-2 rounded-full bg-indigo-400"></span> Cota 50% / pessoa
+              </span>
+              <span class="text-[11px] px-2 py-0.5 rounded-md bg-indigo-500/20 text-indigo-200 font-medium">Metade</span>
+            </div>
+            <div class="text-lg font-bold text-indigo-200 mt-1.5" id="kpiMetadeCard">R$ 21.575,89</div>
+            <div class="text-xs text-indigo-300/80 mt-0.5">Valor igualitário para cada um</div>
+          </div>
+          <div class="text-[11px] text-indigo-300/70 pt-2 border-t border-indigo-500/20 flex items-center justify-between">
+            <span>Base de cálculo:</span>
+            <span>Total selecionado ÷ 2</span>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -172,6 +289,15 @@
           <button onclick="setYearFilter('ALL')" id="yr_ALL" class="px-2.5 py-1 rounded-md font-medium bg-[var(--primary)] text-[var(--primary-foreground)]">Todos</button>
           <button onclick="setYearFilter('2025')" id="yr_2025" class="px-2.5 py-1 rounded-md font-medium text-[var(--muted-foreground)] hover:text-[var(--foreground)]">2025</button>
           <button onclick="setYearFilter('2026')" id="yr_2026" class="px-2.5 py-1 rounded-md font-medium text-[var(--muted-foreground)] hover:text-[var(--foreground)]">2026</button>
+        </div>
+
+        <!-- Quem Pagou Filter (Coluna K) -->
+        <div class="flex items-center gap-1 bg-[var(--background)] border border-[var(--border)] rounded-lg p-1 text-xs">
+          <span class="px-2 text-[var(--muted-foreground)] font-medium">Quem Pagou (Col. K):</span>
+          <button onclick="setQuemPagouFilter('ALL')" id="qp_ALL" class="px-2.5 py-1 rounded-md font-medium bg-[var(--primary)] text-[var(--primary-foreground)]">Todos</button>
+          <button onclick="setQuemPagouFilter('Bruna')" id="qp_Bruna" class="px-2.5 py-1 rounded-md font-medium text-[var(--muted-foreground)] hover:text-[var(--foreground)]">Bruna</button>
+          <button onclick="setQuemPagouFilter('Giovani')" id="qp_Giovani" class="px-2.5 py-1 rounded-md font-medium text-[var(--muted-foreground)] hover:text-[var(--foreground)]">Giovani</button>
+          <button onclick="setQuemPagouFilter('Outros')" id="qp_Outros" class="px-2.5 py-1 rounded-md font-medium text-[var(--muted-foreground)] hover:text-[var(--foreground)]">Outros</button>
         </div>
 
         <!-- Status Filter -->
@@ -194,7 +320,7 @@
           type="text"
           id="searchInput"
           oninput="setSearchQuery(this.value)"
-          placeholder="Buscar item na Coluna J (ex: Unimed, Vacina, Fralda, Leite, Uber)..."
+          placeholder="Buscar item (Col. J), quem pagou (Col. K) ou obs (Col. L)..."
           class="w-full bg-[var(--background)] border border-[var(--border)] text-[var(--foreground)] placeholder-[var(--muted-foreground)] rounded-lg pl-3 pr-8 py-1.5 text-xs focus:outline-none focus:ring-1 focus:ring-[var(--primary)]"
         />
         <button id="clearSearchBtn" onclick="clearFilters()" class="hidden absolute right-2 top-1/2 -translate-y-1/2 text-xs text-[var(--muted-foreground)] hover:text-[var(--foreground)]">
@@ -239,6 +365,7 @@
           <div>
             <span class="text-xs text-[var(--muted-foreground)]">Total em 2025 (Abr–Dez)</span>
             <div class="text-sm font-bold text-[var(--foreground)]" id="sum2025">R$ 17.300,10</div>
+            <div class="text-[11px] font-semibold text-indigo-400" id="sum2025Div2">50% cada: R$ 8.650,05</div>
           </div>
           <span class="text-xs px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 font-medium" id="cnt2025">80 itens</span>
         </div>
@@ -246,6 +373,7 @@
           <div>
             <span class="text-xs text-[var(--muted-foreground)]">Total em 2026 (Jan–Dez)</span>
             <div class="text-sm font-bold text-[var(--foreground)]" id="sum2026">R$ 25.851,67</div>
+            <div class="text-[11px] font-semibold text-indigo-400" id="sum2026Div2">50% cada: R$ 12.925,84</div>
           </div>
           <span class="text-xs px-2 py-0.5 rounded bg-sky-500/10 text-sky-400 font-medium" id="cnt2026">146 itens</span>
         </div>
@@ -253,6 +381,7 @@
           <div>
             <span class="text-xs text-[var(--muted-foreground)]">Filtro Selecionado</span>
             <div class="text-sm font-bold text-[var(--foreground)]" id="sumFiltered">R$ 43.151,77</div>
+            <div class="text-[11px] font-semibold text-indigo-400" id="sumFilteredDiv2">50% cada: R$ 21.575,89</div>
           </div>
           <button onclick="clearFilters()" class="text-xs px-2.5 py-1 rounded-lg border border-[var(--border)] hover:bg-[var(--card)] text-[var(--muted-foreground)] hover:text-[var(--foreground)] transition">
             Resetar Filtros
@@ -285,7 +414,7 @@
             Itens Gastos Separados por Mês
           </h2>
           <p class="text-xs text-[var(--muted-foreground)]">
-            Detalhamento completo por mês com as colunas F (Situação), G (Saídas poupança), H (Dia), I (Ano) e J (Item)
+            Detalhamento mensal com Colunas F (Situação), G (Saídas), H/I (Data), J (Item), K (Quem Pagou) e L (Obs) — com valor dividido por 2
           </p>
         </div>
         <div class="flex flex-wrap items-center gap-2">
@@ -367,6 +496,7 @@
       groupMode: "mesBloco",
       yearFilter: "ALL",
       statusFilter: "ALL",
+      quemPagouFilter: "ALL",
       monthFilter: "ALL",
       categoryFilter: "ALL",
       searchQuery: "",
@@ -378,15 +508,17 @@
     function mapRecordsToItems(rawRecords) {
       return rawRecords.map(r => ({
         row: r[0],
-        situacao: r[1],
+        situacao: r[1] || "",
         isPago: r[1] === "PAGO",
         valor: Number(r[2]) || 0,
-        diaRaw: r[3],
-        dataDisplay: r[4],
+        diaRaw: r[3] || "",
+        dataDisplay: r[4] || "",
         ano: String(r[5]),
         mesData: r[6],
         mesBloco: r[7],
-        item: r[8],
+        item: r[8] || "(Sem descrição)",
+        quemPagou: r[9] || "",
+        observacao: r[10] || "",
         categoria: classifyItem(r[8])
       }));
     }
@@ -416,7 +548,13 @@
 
     async function loadInitialData() {
       try {
-        const res = await fetch("/api/expenses");
+        let res;
+        try {
+          res = await fetch("/api/expenses");
+          if (!res.ok) throw new Error("Local fetch not ok");
+        } catch (_) {
+          res = await fetch("https://poupanca.136-248-111-213.sslip.io/api/expenses");
+        }
         const data = await res.json();
         if (data.ok && Array.isArray(data.records)) {
           ITEMS = mapRecordsToItems(data.records);
@@ -438,7 +576,13 @@
       txt.textContent = "Sincronizando...";
 
       try {
-        const res = await fetch("/api/sync", { method: "POST" });
+        let res;
+        try {
+          res = await fetch("/api/sync", { method: "POST" });
+          if (!res.ok) throw new Error("Local sync not ok");
+        } catch (_) {
+          res = await fetch("https://poupanca.136-248-111-213.sslip.io/api/sync", { method: "POST" });
+        }
         const data = await res.json();
         if (!data.ok) throw new Error(data.error || "Falha ao sincronizar planilha");
         ITEMS = mapRecordsToItems(data.records);
@@ -474,6 +618,11 @@
         if (state.yearFilter !== "ALL" && it.ano !== state.yearFilter) return false;
         if (state.statusFilter === "PAGO" && !it.isPago) return false;
         if (state.statusFilter === "ABERTO" && it.isPago) return false;
+        if (state.quemPagouFilter !== "ALL") {
+          if (state.quemPagouFilter === "Bruna" && it.quemPagou !== "Bruna") return false;
+          else if (state.quemPagouFilter === "Giovani" && it.quemPagou !== "Giovani") return false;
+          else if (state.quemPagouFilter === "Outros" && (it.quemPagou === "Bruna" || it.quemPagou === "Giovani")) return false;
+        }
         if (state.categoryFilter !== "ALL" && it.categoria !== state.categoryFilter) return false;
         if (!ignoreMonthFilter && state.monthFilter !== "ALL" && it[state.groupMode] !== state.monthFilter) return false;
         if (state.searchQuery.trim() !== "") {
@@ -481,7 +630,9 @@
           const matchItem = it.item.toLowerCase().includes(q);
           const matchDate = it.dataDisplay.toLowerCase().includes(q);
           const matchCat = it.categoria.toLowerCase().includes(q);
-          if (!matchItem && !matchDate && !matchCat) return false;
+          const matchQuem = (it.quemPagou || "").toLowerCase().includes(q);
+          const matchObs = (it.observacao || "").toLowerCase().includes(q);
+          if (!matchItem && !matchDate && !matchCat && !matchQuem && !matchObs) return false;
         }
         return true;
       });
@@ -510,6 +661,21 @@
           el.className = "px-2.5 py-1 rounded-md font-medium bg-[var(--primary)] text-[var(--primary-foreground)]";
         } else {
           el.className = "px-2.5 py-1 rounded-md font-medium text-[var(--muted-foreground)] hover:text-[var(--foreground)]";
+        }
+      });
+      renderAll(true);
+    }
+
+    function setQuemPagouFilter(qp) {
+      state.quemPagouFilter = state.quemPagouFilter === qp && qp !== "ALL" ? "ALL" : qp;
+      ["ALL", "Bruna", "Giovani", "Outros"].forEach(k => {
+        const el = document.getElementById("qp_" + k);
+        if (el) {
+          if (k === state.quemPagouFilter) {
+            el.className = "px-2.5 py-1 rounded-md font-medium bg-[var(--primary)] text-[var(--primary-foreground)] shadow-sm";
+          } else {
+            el.className = "px-2.5 py-1 rounded-md font-medium text-[var(--muted-foreground)] hover:text-[var(--foreground)]";
+          }
         }
       });
       renderAll(true);
@@ -561,12 +727,14 @@
     function clearFilters() {
       state.yearFilter = "ALL";
       state.statusFilter = "ALL";
+      state.quemPagouFilter = "ALL";
       state.monthFilter = "ALL";
       state.categoryFilter = "ALL";
       state.searchQuery = "";
       document.getElementById("searchInput").value = "";
       document.getElementById("clearSearchBtn").classList.add("hidden");
       setYearFilter("ALL");
+      setQuemPagouFilter("ALL");
       setStatusFilter("ALL");
       renderAll(true);
     }
@@ -607,11 +775,13 @@
       chartItems.forEach(it => {
         const m = it[state.groupMode];
         if (!monthMap[m]) {
-          monthMap[m] = { ym: m, total: 0, pago: 0, aberto: 0, count: 0, items: [] };
+          monthMap[m] = { ym: m, total: 0, pago: 0, aberto: 0, bruna: 0, giovani: 0, count: 0, items: [] };
         }
         monthMap[m].total += it.valor;
         if (it.isPago) monthMap[m].pago += it.valor;
         else monthMap[m].aberto += it.valor;
+        if (it.quemPagou === "Bruna") monthMap[m].bruna += it.valor;
+        if (it.quemPagou === "Giovani") monthMap[m].giovani += it.valor;
         monthMap[m].count += 1;
         monthMap[m].items.push(it);
       });
@@ -624,10 +794,19 @@
       }
 
       const totalVal = listItems.reduce((s, i) => s + i.valor, 0);
+      const dividido2 = totalVal / 2;
       const pagoItems = listItems.filter(i => i.isPago);
       const abertoItems = listItems.filter(i => !i.isPago);
       const pagoVal = pagoItems.reduce((s, i) => s + i.valor, 0);
       const abertoVal = abertoItems.reduce((s, i) => s + i.valor, 0);
+      const pagoDividido2 = pagoVal / 2;
+
+      const brunaItems = listItems.filter(i => i.quemPagou === "Bruna");
+      const brunaVal = brunaItems.reduce((s, i) => s + i.valor, 0);
+      const giovaniItems = listItems.filter(i => i.quemPagou === "Giovani");
+      const giovaniVal = giovaniItems.reduce((s, i) => s + i.valor, 0);
+      const outrosItems = listItems.filter(i => i.quemPagou !== "Bruna" && i.quemPagou !== "Giovani");
+      const outrosVal = outrosItems.reduce((s, i) => s + i.valor, 0);
 
       const activeMonthsCount = new Set(listItems.map(i => i[state.groupMode])).size || 1;
       const mediaMensal = totalVal / activeMonthsCount;
@@ -636,16 +815,60 @@
       document.getElementById("kpiTotalValor").textContent = formatBRL(totalVal);
       document.getElementById("kpiTotalCount").textContent = `${listItems.length} itens`;
       document.getElementById("kpiFormulaVal").textContent = formatBRL(sheetFormulaTotal);
+      document.getElementById("kpiDividido2").textContent = formatBRL(dividido2);
+
       document.getElementById("kpiPagoValor").textContent = formatBRL(pagoVal);
       document.getElementById("kpiPagoCount").textContent = `PAGO (${pagoItems.length} itens)`;
       document.getElementById("kpiAbertoValor").textContent = formatBRL(abertoVal);
       document.getElementById("kpiAbertoCount").textContent = `Sem status (${abertoItems.length} itens)`;
+      document.getElementById("kpiPagoDividido2").textContent = formatBRL(pagoDividido2);
       const pctPago = totalVal > 0 ? ((pagoVal / totalVal) * 100).toFixed(1).replace(".", ",") : "0,0";
       document.getElementById("kpiPagoPct").textContent = `${pctPago}% marcado PAGO`;
 
       document.getElementById("kpiMesesCount").textContent = `${activeMonthsCount} ${activeMonthsCount === 1 ? "mês" : "meses"}`;
       document.getElementById("kpiMediaMensal").textContent = formatBRL(mediaMensal);
+      document.getElementById("kpiMediaDividido2").textContent = formatBRL(mediaMensal / 2);
       document.getElementById("kpiTicketMedio").innerHTML = `Ticket médio por gasto: <strong class="text-[var(--foreground)]">${formatBRL(ticketMedio)}</strong>`;
+
+      // Pagadores KPI
+      document.getElementById("kpiBrunaTotal").textContent = formatBRL(brunaVal);
+      document.getElementById("kpiBrunaCount").textContent = `${brunaItems.length} itens`;
+      document.getElementById("kpiBrunaPct").textContent = totalVal > 0 ? `${((brunaVal / totalVal) * 100).toFixed(1).replace(".", ",")}% do total` : "0,0%";
+      const barBruna = document.getElementById("barBrunaPct");
+      if (barBruna) barBruna.style.width = Math.min(100, Math.max(2, (brunaVal / (totalVal || 1)) * 100)) + "%";
+
+      document.getElementById("kpiGiovaniTotal").textContent = formatBRL(giovaniVal);
+      document.getElementById("kpiGiovaniCount").textContent = `${giovaniItems.length} itens`;
+      document.getElementById("kpiGiovaniPct").textContent = totalVal > 0 ? `${((giovaniVal / totalVal) * 100).toFixed(1).replace(".", ",")}% do total` : "0,0%";
+      const barGio = document.getElementById("barGiovaniPct");
+      if (barGio) barGio.style.width = Math.min(100, Math.max(2, (giovaniVal / (totalVal || 1)) * 100)) + "%";
+
+      document.getElementById("kpiOutrosTotal").textContent = formatBRL(outrosVal);
+      document.getElementById("kpiOutrosCount").textContent = `${outrosItems.length} itens`;
+      document.getElementById("kpiOutrosPct").textContent = totalVal > 0 ? `${((outrosVal / totalVal) * 100).toFixed(1).replace(".", ",")}% do total` : "0,0%";
+      const barOutros = document.getElementById("barOutrosPct");
+      if (barOutros) barOutros.style.width = Math.min(100, Math.max(1, (outrosVal / (totalVal || 1)) * 100)) + "%";
+
+      document.getElementById("kpiMetadeCard").textContent = formatBRL(dividido2);
+
+      // Acerto 50/50
+      const acertoEl = document.getElementById("kpiAcertoContas");
+      if (acertoEl) {
+        const diffGiovani = dividido2 - giovaniVal;
+        if (Math.abs(diffGiovani) < 0.05) {
+          acertoEl.innerHTML = `<span class="text-emerald-400 font-bold">⚖️ Contas 100% equilibradas (50/50)!</span>`;
+        } else if (diffGiovani > 0) {
+          acertoEl.innerHTML = `
+            <span class="text-[var(--muted-foreground)]">Acerto 50/50:</span>
+            <span class="font-bold text-amber-300">Giovani repassa <strong class="text-white">${formatBRL(diffGiovani)}</strong> para Bruna</span>
+          `;
+        } else {
+          acertoEl.innerHTML = `
+            <span class="text-[var(--muted-foreground)]">Acerto 50/50:</span>
+            <span class="font-bold text-emerald-300">Bruna repassa <strong class="text-white">${formatBRL(-diffGiovani)}</strong> para Giovani</span>
+          `;
+        }
+      }
 
       const listMonthMap = {};
       listItems.forEach(it => {
@@ -663,20 +886,29 @@
         const topItem = [...listMonthMap[peakM].items].sort((a, b) => b.valor - a.valor)[0];
         document.getElementById("kpiPicoMes").textContent = formatMonthLabel(peakM);
         document.getElementById("kpiPicoValor").textContent = formatBRL(listMonthMap[peakM].total);
+        document.getElementById("kpiPicoDividido2").textContent = formatBRL(listMonthMap[peakM].total / 2);
         document.getElementById("kpiPicoSub").textContent = topItem ? `Maior item: ${topItem.item.slice(0, 32)} (${formatBRL(topItem.valor)})` : "";
       } else {
         document.getElementById("kpiPicoMes").textContent = "-";
         document.getElementById("kpiPicoValor").textContent = "R$ 0,00";
+        document.getElementById("kpiPicoDividido2").textContent = "R$ 0,00";
         document.getElementById("kpiPicoSub").textContent = "Nenhum item encontrado";
       }
 
       const items2025 = listItems.filter(i => i.ano === "2025");
       const items2026 = listItems.filter(i => i.ano === "2026");
-      document.getElementById("sum2025").textContent = formatBRL(items2025.reduce((s, i) => s + i.valor, 0));
+      const tot2025 = items2025.reduce((s, i) => s + i.valor, 0);
+      const tot2026 = items2026.reduce((s, i) => s + i.valor, 0);
+      document.getElementById("sum2025").textContent = formatBRL(tot2025);
+      document.getElementById("sum2025Div2").textContent = `50% cada: ${formatBRL(tot2025 / 2)}`;
       document.getElementById("cnt2025").textContent = `${items2025.length} itens`;
-      document.getElementById("sum2026").textContent = formatBRL(items2026.reduce((s, i) => s + i.valor, 0));
+
+      document.getElementById("sum2026").textContent = formatBRL(tot2026);
+      document.getElementById("sum2026Div2").textContent = `50% cada: ${formatBRL(tot2026 / 2)}`;
       document.getElementById("cnt2026").textContent = `${items2026.length} itens`;
+
       document.getElementById("sumFiltered").textContent = formatBRL(totalVal);
+      document.getElementById("sumFilteredDiv2").textContent = `50% cada: ${formatBRL(dividido2)}`;
 
       renderChart(sortedMonths, monthMap);
       renderCategories();
@@ -703,7 +935,7 @@
 
         return `
           <div onclick="setMonthFilter('${isSelected ? "ALL" : ym}')" class="bar-col flex-1 min-w-[34px] flex flex-col items-center justify-end h-full relative cursor-pointer group ${opacityClass} transition-all">
-            <div class="bar-tooltip opacity-0 pointer-events-none transition-all duration-150 absolute bottom-full mb-2 left-1/2 -translate-x-1/2 z-20 bg-[var(--card)] border border-[var(--border)] shadow-lg rounded-xl p-2.5 w-48 text-xs">
+            <div class="bar-tooltip opacity-0 pointer-events-none transition-all duration-150 absolute bottom-full mb-2 left-1/2 -translate-x-1/2 z-20 bg-[var(--card)] border border-[var(--border)] shadow-lg rounded-xl p-2.5 w-52 text-xs">
               <div class="font-bold text-[var(--foreground)] border-b border-[var(--border)] pb-1 mb-1 flex justify-between">
                 <span>${formatMonthLabel(ym)}</span>
                 <span>${d.count} itens</span>
@@ -712,8 +944,14 @@
                 <span>Total:</span>
                 <span>${formatBRL(d.total)}</span>
               </div>
+              <div class="flex justify-between text-indigo-400 font-bold mt-0.5 pt-0.5 border-t border-[var(--border)]">
+                <span>Dividido por 2:</span>
+                <span>${formatBRL(d.total / 2)}</span>
+              </div>
               ${d.pago > 0 ? `<div class="flex justify-between text-emerald-400 mt-0.5"><span>Pago:</span><span>${formatBRL(d.pago)}</span></div>` : ""}
               ${d.aberto > 0 ? `<div class="flex justify-between text-sky-400 mt-0.5"><span>Sem PAGO:</span><span>${formatBRL(d.aberto)}</span></div>` : ""}
+              ${d.bruna > 0 ? `<div class="flex justify-between text-pink-400 mt-0.5"><span>Bruna:</span><span>${formatBRL(d.bruna)}</span></div>` : ""}
+              ${d.giovani > 0 ? `<div class="flex justify-between text-cyan-400 mt-0.5"><span>Giovani:</span><span>${formatBRL(d.giovani)}</span></div>` : ""}
             </div>
 
             <span class="text-xs font-semibold text-[var(--muted-foreground)] group-hover:text-[var(--foreground)] mb-1 whitespace-nowrap">
@@ -738,6 +976,11 @@
         if (state.yearFilter !== "ALL" && it.ano !== state.yearFilter) return false;
         if (state.statusFilter === "PAGO" && !it.isPago) return false;
         if (state.statusFilter === "ABERTO" && it.isPago) return false;
+        if (state.quemPagouFilter !== "ALL") {
+          if (state.quemPagouFilter === "Bruna" && it.quemPagou !== "Bruna") return false;
+          else if (state.quemPagouFilter === "Giovani" && it.quemPagou !== "Giovani") return false;
+          else if (state.quemPagouFilter === "Outros" && (it.quemPagou === "Bruna" || it.quemPagou === "Giovani")) return false;
+        }
         if (state.monthFilter !== "ALL" && it[state.groupMode] !== state.monthFilter) return false;
         return true;
       });
@@ -764,6 +1007,7 @@
         const active = state.categoryFilter === cat;
         const pctNum = (info.total / totalAllCats) * 100;
         const pctFormatted = pctNum.toFixed(1).replace(".", ",");
+        const catDividido2 = info.total / 2;
         return `
           <button onclick="setCategoryFilter('${cat}')" class="text-left p-3.5 rounded-xl border transition-all ${active ? "bg-[var(--primary)] text-[var(--primary-foreground)] border-[var(--primary)] shadow-sm" : "bg-[var(--background)] border-[var(--border)] hover:border-[var(--muted-foreground)]"}">
             <div class="flex items-center justify-between gap-1.5 mb-1">
@@ -774,6 +1018,10 @@
             <div class="flex items-center justify-between text-xs ${active ? "text-[var(--primary-foreground)]/80" : "text-[var(--muted-foreground)]"} mt-1">
               <span>${info.count} ${info.count === 1 ? "item" : "itens"}</span>
               <span class="font-medium">${pctFormatted}% do total</span>
+            </div>
+            <div class="text-[11px] font-semibold text-indigo-400 mt-1.5 pt-1 border-t border-[var(--border)]/40 flex justify-between">
+              <span>50% cada:</span>
+              <span>${formatBRL(catDividido2)}</span>
             </div>
             <div class="w-full bg-[var(--card)]/60 h-1.5 rounded-full mt-2 overflow-hidden border border-[var(--border)]/40">
               <div class="h-full rounded-full ${active ? "bg-white" : "bg-emerald-400"}" style="width: ${Math.min(100, Math.max(3, pctNum))}%"></div>
@@ -819,8 +1067,11 @@
         else mItems.sort((a, b) => a.row - b.row);
 
         const mTotal = mItems.reduce((s, i) => s + i.valor, 0);
+        const mDividido2 = mTotal / 2;
         const mPago = mItems.filter(i => i.isPago).reduce((s, i) => s + i.valor, 0);
         const mAberto = mTotal - mPago;
+        const mBruna = mItems.filter(i => i.quemPagou === "Bruna").reduce((s, i) => s + i.valor, 0);
+        const mGiovani = mItems.filter(i => i.quemPagou === "Giovani").reduce((s, i) => s + i.valor, 0);
         const maxItemVal = Math.max(...mItems.map(i => i.valor), 1);
         const pctOfTotal = ((mTotal / totalAll) * 100).toFixed(1).replace(".", ",");
         const isExpanded = state.expandedMonths.has(ym);
@@ -839,10 +1090,15 @@
                       ${mItems.length} ${mItems.length === 1 ? "item" : "itens"}
                     </span>
                   </div>
-                  <div class="flex flex-wrap items-center gap-3 text-xs text-[var(--muted-foreground)] mt-0.5">
-                    <span>Representa <strong class="text-[var(--foreground)]">${pctOfTotal}%</strong> do período exibido</span>
+                  <div class="flex flex-wrap items-center gap-2.5 text-xs text-[var(--muted-foreground)] mt-0.5">
+                    <span>Representa <strong class="text-[var(--foreground)]">${pctOfTotal}%</strong></span>
+                    <span class="text-indigo-400 font-bold bg-indigo-500/10 px-2 py-0.5 rounded-md border border-indigo-500/20">
+                      👥 50% cada: ${formatBRL(mDividido2)}
+                    </span>
                     ${mPago > 0 ? `<span class="text-emerald-400">● Pago: ${formatBRL(mPago)}</span>` : ""}
                     ${mAberto > 0 ? `<span class="text-sky-400">● Sem PAGO: ${formatBRL(mAberto)}</span>` : ""}
+                    ${mBruna > 0 ? `<span class="text-pink-400">● Bruna: ${formatBRL(mBruna)}</span>` : ""}
+                    ${mGiovani > 0 ? `<span class="text-cyan-400">● Giovani: ${formatBRL(mGiovani)}</span>` : ""}
                   </div>
                 </div>
               </div>
@@ -851,6 +1107,11 @@
                 <div class="text-right">
                   <div class="text-xs text-[var(--muted-foreground)]">Total do Mês (Col. G)</div>
                   <div class="text-lg font-bold text-[var(--foreground)]">${formatBRL(mTotal)}</div>
+                  <div class="text-xs font-bold text-indigo-400 mt-0.5 flex items-center justify-end gap-1">
+                    <span>Dividido por 2:</span>
+                    <span>${formatBRL(mDividido2)}</span>
+                    <span class="text-[10px] text-[var(--muted-foreground)] font-normal">/ pessoa</span>
+                  </div>
                 </div>
                 <span class="text-xs px-2.5 py-1 rounded-lg bg-[var(--background)] border border-[var(--border)] text-[var(--muted-foreground)] font-medium">
                   ${isExpanded ? "Ocultar ▲" : "Ver itens ▼"}
@@ -863,11 +1124,13 @@
                 <table class="w-full text-left border-collapse">
                   <thead>
                     <tr class="bg-[var(--background)]/60 text-[var(--muted-foreground)] text-xs border-b border-[var(--border)]">
-                      <th class="py-2.5 px-4 font-semibold w-16">Linha</th>
-                      <th class="py-2.5 px-3 font-semibold w-28">Col. F (Situação)</th>
-                      <th class="py-2.5 px-3 font-semibold w-36">Col. H / I (Dia/Ano)</th>
-                      <th class="py-2.5 px-4 font-semibold">Col. J (Item / Descrição do Gasto)</th>
-                      <th class="py-2.5 px-4 font-semibold text-right w-44">Col. G (Saídas Poupança)</th>
+                      <th class="py-2.5 px-3 font-semibold w-12 text-center">Linha</th>
+                      <th class="py-2.5 px-3 font-semibold w-24">Situação (Col. F)</th>
+                      <th class="py-2.5 px-3 font-semibold w-28 whitespace-nowrap">Dia/Ano (Col. H/I)</th>
+                      <th class="py-2.5 px-4 font-semibold">Item / Descrição do Gasto (Col. J)</th>
+                      <th class="py-2.5 px-3 font-semibold w-32">Quem Pagou (Col. K)</th>
+                      <th class="py-2.5 px-3 font-semibold w-48">Observação (Col. L)</th>
+                      <th class="py-2.5 px-4 font-semibold text-right w-44">Saídas (Col. G)</th>
                     </tr>
                   </thead>
                   <tbody class="divide-y divide-[var(--border)] text-xs md:text-sm">
@@ -882,17 +1145,38 @@
                         badgeHtml = `<span class="px-2 py-0.5 rounded-md text-xs font-medium bg-[var(--background)] text-[var(--muted-foreground)] border border-[var(--border)]">Em aberto</span>`;
                       }
 
+                      let pagouBadge = "";
+                      if (it.quemPagou === "Bruna") {
+                        pagouBadge = `<span class="px-2 py-0.5 rounded-md text-xs font-semibold bg-pink-500/15 text-pink-300 border border-pink-500/30 whitespace-nowrap">Bruna</span>`;
+                      } else if (it.quemPagou === "Giovani") {
+                        pagouBadge = `<span class="px-2 py-0.5 rounded-md text-xs font-semibold bg-sky-500/15 text-sky-300 border border-sky-500/30 whitespace-nowrap">Giovani</span>`;
+                      } else if (it.quemPagou) {
+                        pagouBadge = `<span class="px-2 py-0.5 rounded-md text-xs font-medium bg-indigo-500/15 text-indigo-300 border border-indigo-500/30 whitespace-nowrap">${it.quemPagou}</span>`;
+                      } else {
+                        pagouBadge = `<span class="text-xs text-[var(--muted-foreground)]">—</span>`;
+                      }
+
+                      let obsHtml = "";
+                      if (it.observacao) {
+                        obsHtml = `<span class="text-xs text-[var(--foreground)]/90 bg-[var(--background)] border border-[var(--border)] px-2 py-0.5 rounded-md inline-block max-w-[240px] truncate" title="${it.observacao}">💬 ${it.observacao}</span>`;
+                      } else {
+                        obsHtml = `<span class="text-xs text-[var(--muted-foreground)]">—</span>`;
+                      }
+
                       return `
                         <tr class="hover:bg-[var(--secondary)]/30 transition">
-                          <td class="py-2.5 px-4 text-xs text-[var(--muted-foreground)] font-mono">#${it.row}</td>
+                          <td class="py-2.5 px-3 text-xs text-[var(--muted-foreground)] font-mono text-center">#${it.row}</td>
                           <td class="py-2.5 px-3">${badgeHtml}</td>
                           <td class="py-2.5 px-3 text-xs text-[var(--muted-foreground)] whitespace-nowrap">${it.dataDisplay}</td>
                           <td class="py-2.5 px-4">
                             <div class="font-medium text-[var(--foreground)]">${it.item}</div>
                             <div class="text-xs text-[var(--muted-foreground)] mt-0.5">${it.categoria}</div>
                           </td>
+                          <td class="py-2.5 px-3">${pagouBadge}</td>
+                          <td class="py-2.5 px-3">${obsHtml}</td>
                           <td class="py-2.5 px-4 text-right">
                             <div class="font-bold text-[var(--foreground)]">${formatBRL(it.valor)}</div>
+                            <div class="text-[11px] text-indigo-400 font-semibold">50%: ${formatBRL(it.valor / 2)}</div>
                             <div class="w-full bg-[var(--background)] h-1.5 rounded-full mt-1 overflow-hidden">
                               <div class="h-full rounded-full ${it.isPago ? "bg-emerald-500" : "bg-sky-500"}" style="width: ${barW}%"></div>
                             </div>
@@ -903,8 +1187,19 @@
                   </tbody>
                   <tfoot>
                     <tr class="bg-[var(--background)]/80 font-bold text-xs md:text-sm border-t border-[var(--border)]">
-                      <td colspan="4" class="py-2.5 px-4 text-right text-[var(--muted-foreground)]">Subtotal de ${formatMonthLabel(ym)} (${mItems.length} itens):</td>
-                      <td class="py-2.5 px-4 text-right text-[var(--foreground)]">${formatBRL(mTotal)}</td>
+                      <td colspan="4" class="py-3 px-4 text-left text-[var(--muted-foreground)]">
+                        Subtotal de ${formatMonthLabel(ym)} (${mItems.length} itens)
+                      </td>
+                      <td colspan="2" class="py-3 px-3 text-left">
+                        <div class="text-xs text-indigo-300 font-semibold flex items-center gap-1.5">
+                          <span class="w-2 h-2 rounded-full bg-indigo-400"></span>
+                          Dividido por 2 (por pessoa): <strong class="text-indigo-200 text-sm">${formatBRL(mDividido2)}</strong>
+                        </div>
+                      </td>
+                      <td class="py-3 px-4 text-right text-[var(--foreground)]">
+                        <div class="text-base font-bold">${formatBRL(mTotal)}</div>
+                        <div class="text-xs font-semibold text-indigo-400">50% cada: ${formatBRL(mDividido2)}</div>
+                      </td>
                     </tr>
                   </tfoot>
                 </table>

@@ -241,7 +241,7 @@ function parsePoupancaBabyXlsx(xlsxBuf) {
       const refM = cAttrs.match(/r="([A-Z]+)\d+"/);
       if (!refM) continue;
       const colLetter = refM[1];
-      if (!['F', 'G', 'H', 'I', 'J'].includes(colLetter)) continue;
+      if (!['F', 'G', 'H', 'I', 'J', 'K', 'L'].includes(colLetter)) continue;
 
       const typeM = cAttrs.match(/t="([^"]+)"/);
       const cellType = typeM ? typeM[1] : '';
@@ -258,6 +258,8 @@ function parsePoupancaBabyXlsx(xlsxBuf) {
     const hVal = cols.H || '';
     const iVal = (cols.I || '').replace(/\.0$/, '');
     const jVal = cols.J || '';
+    const kVal = cols.K || '';
+    const lVal = cols.L || '';
 
     // Verifica se é a linha de "Total Gastos" (ex: Linha 231)
     if (hVal.toLowerCase().includes('total gastos') || jVal.toLowerCase().includes('total gastos')) {
@@ -296,7 +298,9 @@ function parsePoupancaBabyXlsx(xlsxBuf) {
       year,
       `${year}-${String(dateMonth).padStart(2, '0')}`,
       `${year}-${String(blockMonth).padStart(2, '0')}`,
-      jVal || '(Sem descrição)'
+      jVal || '(Sem descrição)',
+      kVal || '',
+      lVal || ''
     ]);
   }
 
@@ -304,7 +308,7 @@ function parsePoupancaBabyXlsx(xlsxBuf) {
   return {
     spreadsheetId: SPREADSHEET_ID,
     sheetName: 'Poupança Baby',
-    columns: ['F (Situação)', 'G (Saídas poupança)', 'H (Dia)', 'I (Ano)', 'J (Item)'],
+    columns: ['F (Situação)', 'G (Saídas poupança)', 'H (Dia)', 'I (Ano)', 'J (Item)', 'K (Quem pagou)', 'L (Observação)'],
     lastSync: new Date().toISOString(),
     totalItems: records.length,
     totalAmount,
