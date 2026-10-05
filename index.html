@@ -288,11 +288,17 @@
             Detalhamento completo por mês com as colunas F (Situação), G (Saídas poupança), H (Dia), I (Ano) e J (Item)
           </p>
         </div>
-        <div class="flex items-center gap-2">
+        <div class="flex flex-wrap items-center gap-2">
+          <!-- Ordenação dos Meses -->
+          <select id="monthSortSelect" onchange="setMonthSortOrder(this.value)" class="bg-[var(--card)] border border-[var(--border)] text-[var(--foreground)] rounded-lg px-3 py-1.5 text-xs font-medium focus:ring-1 focus:ring-[var(--primary)]">
+            <option value="desc">Ordem dos meses: Mais atual para menos atual (↓)</option>
+            <option value="asc">Ordem dos meses: Menos atual para mais atual (↑)</option>
+          </select>
+          <!-- Ordenação dos Itens dentro do Mês -->
           <select id="sortSelect" onchange="setSortOrder(this.value)" class="bg-[var(--card)] border border-[var(--border)] text-[var(--foreground)] rounded-lg px-3 py-1.5 text-xs font-medium">
-            <option value="row">Ordenar itens: Ordem da Planilha</option>
-            <option value="val_desc">Ordenar itens: Maior Valor (Col. G)</option>
-            <option value="val_asc">Ordenar itens: Menor Valor (Col. G)</option>
+            <option value="row">Itens: Ordem da Planilha</option>
+            <option value="val_desc">Itens: Maior Valor (Col. G)</option>
+            <option value="val_asc">Itens: Menor Valor (Col. G)</option>
           </select>
           <button onclick="toggleAllMonths(true)" class="px-3 py-1.5 rounded-lg bg-[var(--card)] border border-[var(--border)] text-xs font-medium hover:bg-[var(--secondary)] transition">
             Expandir Todos
@@ -365,6 +371,7 @@
       categoryFilter: "ALL",
       searchQuery: "",
       sortOrder: "row",
+      monthSortOrder: "desc",
       expandedMonths: new Set()
     };
 
@@ -543,7 +550,12 @@
 
     function setSortOrder(ord) {
       state.sortOrder = ord;
-      renderAll(false);
+      renderMonthsList();
+    }
+
+    function setMonthSortOrder(ord) {
+      state.monthSortOrder = ord;
+      renderMonthsList();
     }
 
     function clearFilters() {
@@ -745,15 +757,27 @@
         badge.classList.add("hidden");
       }
 
+      const totalAllCats = Object.values(catMap).reduce((s, b) => s + b.total, 0) || 1;
       const sortedCats = Object.entries(catMap).sort((a, b) => b[1].total - a[1].total);
       const grid = document.getElementById("categoryGrid");
       grid.innerHTML = sortedCats.map(([cat, info]) => {
         const active = state.categoryFilter === cat;
+        const pctNum = (info.total / totalAllCats) * 100;
+        const pctFormatted = pctNum.toFixed(1).replace(".", ",");
         return `
-          <button onclick="setCategoryFilter('${cat}')" class="text-left p-3 rounded-xl border transition-all ${active ? "bg-[var(--primary)] text-[var(--primary-foreground)] border-[var(--primary)] shadow-sm" : "bg-[var(--background)] border-[var(--border)] hover:border-[var(--muted-foreground)]"}">
-            <div class="text-xs font-semibold truncate">${cat}</div>
-            <div class="text-sm font-bold mt-1">${formatBRL(info.total)}</div>
-            <div class="text-xs ${active ? "opacity-90" : "text-[var(--muted-foreground)]"} mt-0.5">${info.count} ${info.count === 1 ? "item" : "itens"}</div>
+          <button onclick="setCategoryFilter('${cat}')" class="text-left p-3.5 rounded-xl border transition-all ${active ? "bg-[var(--primary)] text-[var(--primary-foreground)] border-[var(--primary)] shadow-sm" : "bg-[var(--background)] border-[var(--border)] hover:border-[var(--muted-foreground)]"}">
+            <div class="flex items-center justify-between gap-1.5 mb-1">
+              <span class="text-xs font-semibold truncate ${active ? "text-[var(--primary-foreground)] font-bold" : "text-[var(--foreground)]"}">${cat}</span>
+              <span class="text-xs font-bold px-2 py-0.5 rounded-full ${active ? "bg-black/20 text-white" : "bg-emerald-500/15 text-emerald-400 border border-emerald-500/25"} whitespace-nowrap">${pctFormatted}%</span>
+            </div>
+            <div class="text-sm font-bold ${active ? "text-[var(--primary-foreground)]" : "text-[var(--foreground)]"}">${formatBRL(info.total)}</div>
+            <div class="flex items-center justify-between text-xs ${active ? "text-[var(--primary-foreground)]/80" : "text-[var(--muted-foreground)]"} mt-1">
+              <span>${info.count} ${info.count === 1 ? "item" : "itens"}</span>
+              <span class="font-medium">${pctFormatted}% do total</span>
+            </div>
+            <div class="w-full bg-[var(--card)]/60 h-1.5 rounded-full mt-2 overflow-hidden border border-[var(--border)]/40">
+              <div class="h-full rounded-full ${active ? "bg-white" : "bg-emerald-400"}" style="width: ${Math.min(100, Math.max(3, pctNum))}%"></div>
+            </div>
           </button>
         `;
       }).join("");
@@ -770,7 +794,10 @@
         monthGroups[m].push(it);
       });
 
-      const sortedMonths = Object.keys(monthGroups).sort();
+      let sortedMonths = Object.keys(monthGroups).sort();
+      if (state.monthSortOrder === "desc") {
+        sortedMonths.reverse();
+      }
       const container = document.getElementById("monthsList");
 
       if (sortedMonths.length === 0) {
